@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>初筛结果查询</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="../css/public.css" media="all">
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <fieldset class="layui-elem-field layuimini-search">
+            <legend>查询条件</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" lay-filter="condition">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">客户姓名</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="customer_name" name="customer_name" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">手机号码</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="customer_contact_way" name="customer_contact_way"
+                                       autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline sellerDiv" style="display: none">
+                            <label class="layui-form-label">电销人员</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="seller" name="seller" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <a class="layui-btn" lay-submit="" lay-filter="search">查询</a>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+        </fieldset>
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+        <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit">详情</a>
+            <!-- <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a> -->
+        </script>
+        <!--初筛结果 按钮-->
+        <script type="text/html" id="preliminaryResultDiv">
+            {{# if(d.preliminaryResult === "待初筛"){ }}
+            <a class="layui-btn layui-btn-xs data-count-edit" lay-event="ForScreening">查询</a>
+            {{# } }}
+            {{# if(d.preliminaryResult === "待人工审批"){ }}
+            <a class="layui-btn layui-btn-xs data-count-edit" lay-event="ManualApproval">重新查询</a>
+            {{# } }}
+            {{# if(d.preliminaryResult === "初筛通过"){ }}
+            <p>初筛通过</p>
+            {{# } }}
+            {{# if(d.preliminaryResult === "初筛拒绝"){ }}
+            <p>初筛拒绝</p>
+            {{# } }}
+        </script>
+
+        <!--征信结果 -->
+        <script type="text/html" id="creditResultDiv">
+            {{# if(d.creditResult === "待征信"){ }}
+                {{# if(d.preliminaryResult === "初筛通过"){ }}
+                <a class="layui-btn layui-btn-xs data-count-edit" lay-event="SubmitCredit">提交征信</a>
+                {{# }else if(d.preliminaryResult === "待初筛" || d.preliminaryResult === "待人工审批"){ }}
+                <p></p>
+                {{# }else if(d.preliminaryResult === "初筛拒绝"){ }}
+                <p>-</p>
+                {{# } }}
+            {{# } }}
+            {{# if(d.creditResult === "征信中"){ }}
+            <a class="layui-btn layui-btn-xs data-count-edit" lay-event="DuringCredit">查询结果</a>
+            {{# } }}
+            {{# if(d.creditResult === "征信通过"){ }}
+            <p>征信通过</p>
+            {{# } }}
+            {{# if(d.creditResult === "征信拒绝"){ }}
+            <p>征信拒绝</p>
+            {{# } }}
+            {{# if(d.creditResult === "征信异常"){ }}
+            <a class="layui-btn layui-btn-xs data-count-edit" lay-event="CreditAbnormal">异常原因</a>
+            {{# } }}
+        </script>
+
+        <!--预审批结果-->
+        <script type="text/html" id="preApproveResultDiv">
+            <!--预审批结论：""-待预批，1-自动审批，2-人工审批，3-自动拒绝-->
+
+            {{# if(d.preApproveResult == ""){ }}
+                {{# if(d.creditResult === "待征信" || d.creditResult === "征信中"){ }}
+                <p></p>
+                {{# }else  if(d.creditResult === "征信通过" || d.creditResult === "征信拒绝"){ }}
+                <a class="layui-btn layui-btn-xs data-count-edit" lay-event="submitApprove">提交预批</a>
+                {{# }else if(d.creditResult === "征信异常"){ }}
+                <p>-</p>
+                {{# } }}
+            {{# } }}
+            {{# if(d.preApproveResult === "1"){ }}
+            <p>自动审批</p>
+            {{# } }}
+            {{# if(d.preApproveResult === "2"){ }}
+            <p>人工审批</p>
+            {{# } }}
+            {{# if(d.preApproveResult === "3"){ }}
+            <p>自动拒绝</p>
+            {{# } }}
+        </script>
+
+    </div>
+</div>
+<script src="../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+<script src="js/common.js?v=1.0.4"></script>
+<script src="../js/ajaxhook.min.js?v=1.0.4" charset="utf-8"></script>
+<script src="../js/httpIntercept.js?v=1.0.4" charset="utf-8"></script>
+<script>
+    layui.use(['form', 'table', 'laydate','zlhjConfig'], function () {
+        let $ = layui.jquery,
+            form = layui.form,
+            laydate = layui.laydate,
+            zlhjConfig = layui.zlhjConfig,
+            table = layui.table;
+
+        let menu = layui.sessionData('sessionData').menuSession;
+        let user = layui.sessionData('sessionData').userSession;
+        //用户角色(1:名单导入,2:电销外呼,3:管理人员,4:系统管理员)
+        let userRole = user.userRole
+        if(userRole == 2){
+            $('.sellerDiv').hide();
+        } else{
+            $('.sellerDiv').show();
+        }
+
+
+        let business_list_table = table.render({
+            elem: '#currentTableId',
+            toolbar: '<h5>查询结果</h5>',
+            defaultToolbar: [],
+            url: `${zlhjConfig.baseUrl}/electronicCredit/getElectronicCreditAllMsg`,
+            method: 'POST',
+            contentType: 'application/json',
+            request: {
+                pageName: 'currentPage', //页码的参数名称，默认：page
+                limitName: 'pageSize' //每页数据量的参数名，默认：limit
+            },
+            response: {
+                statusCode: 'Y'
+            },
+            where: {
+                "boCustomerName": "",
+                "boCustomerContactWay": "",
+                "boSaleUserName": ""
+            },
+            parseData: function (res) {
+                return {
+                    code: res.state, //解析接口状态
+                    msg: res.msg, //解析提示文本
+                    count: res.data.total, //解析数据长度
+                    data: res.data.records //解析数据列表
+                };
+            },
+            cols: [[
+                {field: 'boApplyId', minWidth: 250, title: '申请编号', align: "center"},
+                {field: 'boCustomerName',  minWidth: 140, title: '客户姓名', align: "center"},
+                {field: 'boCustomerContactWay',  minWidth: 140, title: '手机号码', align: "center",
+                    //     templet: (res) => {
+                    //         var s = res.boCustomerContactWay;
+                    //         return s.substr(0,3) + "****" + s.substr(s.length - 4);
+                    // }
+                },
+                {field: 'boSubmitTime', minWidth: 120, title: '提交日期', align: "center",
+                    // templet: function (row) {
+                    // return row.boRegisterTime == null ? "" : layui.util.toDateString(row.boRegisterTime, 'yyyy-MM-dd');
+                    // }
+                },
+                {field: 'preliminaryResult', minWidth: 120, title: '初筛结果',fixed: "right", align: "center",templet:"#preliminaryResultDiv"},
+                {field: 'creditResult', minWidth: 140,title:"征信结果", fixed: "right", align: "center",templet:"#creditResultDiv"},
+                {field: 'preApproveResult ', minWidth: 140,title:"预审批结果", fixed: "right", align: "center",templet: '#preApproveResultDiv', },
+                {field: 'boSaleUserName', minWidth: 140, title: '电销人员', align: "center",hide:userRole == 2 ? true : false},
+
+            ]],
+            limits: [10, 20, 50, 100],
+            limit: 20,
+            page: true
+        });
+
+
+        /**
+         * 根据条件查询符合的线索列表
+         */
+        form.on('submit(search)', function (res) {
+            console.log('res.field',res.field)
+            business_list_table.reload({
+                where: {
+                    "boCustomerName": res.field.customer_name,
+                    "boCustomerContactWay": res.field.customer_contact_way,
+                    "boSaleUserName": res.field.seller,
+                },
+                page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+            });
+        });
+
+       // 每个按钮对应各自的功能
+        table.on('tool(currentTableFilter)', debounce(buttonFun,1500));
+
+        function buttonFun(obj){
+            let data = obj.data;
+            let buttonUrl;
+            let  loading = layer.load(2, {
+                shade: [0.1, '#000']
+            });
+            //待初筛 查询  or 待人工审批
+            if(obj.event === 'ForScreening'|| obj.event === 'ManualApproval'){
+                buttonUrl = `${zlhjConfig.baseUrl}/electronicCredit/searchScreenResultFromCore`;
+            }
+            //提交征信
+            else if(obj.event === 'SubmitCredit'){
+                buttonUrl = `${zlhjConfig.baseUrl}/electronicCredit/submitCreditFromCore`;
+            }
+            //征信中
+            else if(obj.event === 'DuringCredit'){
+                buttonUrl = `${zlhjConfig.baseUrl}/electronicCredit/searchCreditResultMsgFromCore`;
+            }
+            //征信异常
+            else if(obj.event === 'CreditAbnormal'){
+                layer.closeAll('loading');
+                layer.alert(data.creditErrorMsg + "<br>请重新进行电子征信" , {
+                    skin: 'layui-layer-molv' //样式类名
+                    ,closeBtn: 0,
+                    btn: ['确认','取消']
+                },function () {
+                    business_list_table.reload();
+                    layer.closeAll();
+                });
+                return
+
+            }
+            //提交预批
+            else if(obj.event === 'submitApprove'){
+                buttonUrl = `${zlhjConfig.baseUrl}/electronicCredit/searchCreditPreApproveFromCore`;
+            }
+
+            $.ajax({
+                url: buttonUrl,
+                type: 'post',
+                data: JSON.stringify({creditOrderId: data.creditOrderId}),
+                contentType: 'application/json',
+                dataType: 'json',
+                success: function (res) {
+                    layer.closeAll('loading');
+                    if(res.state == "Y"){
+                        layer.msg(res.msg,{
+                            icon: 1,
+                            time: 1500,
+                            shade: [0.1, '#000']
+                        }, () => {
+                            business_list_table.reload();
+                        });
+                    }else{
+                        layer.msg(res.msg,{
+                            icon:2,
+                            time: 1500,
+                            shade: [0.1, '#000']
+                        }, () => {
+                            business_list_table.reload();
+                        });
+                    }
+
+                },
+                error:function (res) {
+                    layer.closeAll('loading');
+                    layer.msg("操作失败！",{icon: 2,}, () => {
+                        business_list_table.reload();
+                    });
+                }
+            });
+
+
+        };
+
+
+    });
+</script>
+<script>
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8320c8f0-dcd0-4a0d-b751-f108717ccdb7" name="Default Changelist" comment="二期">
+      <change afterPath="$PROJECT_DIR$/images/logoIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/qrLogoTop.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/qrcode.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/page/managerSetting.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/page/reviewHistory.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/page/salerSetting.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/page/screeningResult.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/public.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/public.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/impotExcel.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/impotExcel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/lay-module/layuimini/layuimini.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/lay-module/layuimini/layuimini.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/lay-module/zlhjConfig/zlhjConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/lay-module/zlhjConfig/zlhjConfig.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/adjustment.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/adjustment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/business-add.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/business-add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/business-follow.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/business-follow.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/business-list-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/business-list-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/css/page.css" beforeDir="false" afterPath="$PROJECT_DIR$/page/css/page.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/follow-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/follow-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/order-list-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/order-list-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/repeatCluesDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/repeatCluesDetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/returnRecord-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/returnRecord-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/user-add.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/user-add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/welcome.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/welcome.html" afterDir="false" />
+    </list>
+    <list id="fae9b4bd-b060-4a7f-a9eb-e7a6540382ed" name="Revert: 待跟进商机页面停留当前页码" comment="Revert: 待跟进商机页面停留当前页码" />
+    <list id="0535c237-fbb0-499e-8ea3-b3e3681ae402" name="Revert: 跟进记录缺失失效状态" comment="还原index" />
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/lay-module/zlhjConfig/zlhjConfig.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="414">
+              <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="42">
+              <caret line="197" column="22" selection-start-line="197" selection-start-column="22" selection-end-line="197" selection-end-column="22" />
+              <folding>
+                <element signature="n#style#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/impotExcel.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1426">
+              <caret line="62" column="101" selection-start-line="62" selection-start-column="101" selection-end-line="62" selection-end-column="101" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/page/welcome.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="8188">
+              <caret line="356" column="65" selection-start-line="356" selection-start-column="49" selection-end-line="356" selection-end-column="65" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/page/order-list-detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="19274">
+              <caret line="872" column="62" selection-start-line="872" selection-start-column="54" selection-end-line="872" selection-end-column="62" />
+              <folding>
+                <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#div#3;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#style#0;n#div#4;n#form#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/page/business-follow.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="7222">
+              <caret line="314" column="45" selection-start-line="314" selection-start-column="24" selection-end-line="314" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/page/follow-detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="9568">
+              <caret line="416" column="45" selection-start-line="416" selection-start-column="45" selection-end-line="416" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/page/js/common.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="483">
+              <caret line="21" column="32" lean-forward="true" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/page/user-add.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="197" column="40" lean-forward="true" selection-start-line="197" selection-start-column="40" selection-end-line="197" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/page/returnRecord-detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17089">
+              <caret line="743" column="17" selection-start-line="743" selection-start-column="17" selection-end-line="743" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>provinces</find>
+      <find>excel</find>
+      <find>business_list_table</find>
+      <find>excelData</find>
+      <find>LAY-excel-upload</find>
+      <find>#000</find>
+      <find>layer.msg</find>
+      <find>layer.load</find>
+      <find>search</find>
+      <find>uploadExcel</find>
+      <find>www.huijiefinance</find>
+      <find>method:GET</find>
+      <find>无菜单</find>
+      <find>退出</find>
+      <find>login</find>
+      <find>updateLoginState</find>
+      <find>sessionData</find>
+      <find>orgUserVal</find>
+      <find>onreadystatechange</find>
+      <find>.85.11</find>
+      <find>recordVoices</find>
+      <find>btnDiv</find>
+      <find>tableDGJObj</find>
+      <find>update</find>
+      <find>BusinessRecord</find>
+      <find>刷新</find>
+      <find>screeningQRcode</find>
+      <find>isShow</find>
+      <find>new Option</find>
+      <find>department</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>exBusiness_list_table</replace>
+      <replace>expiry_BOlist_table</replace>
+      <replace>saleUser</replace>
+      <replace>手机号码</replace>
+      <replace />
+      <replace>saleUserId</replace>
+      <replace>boData</replace>
+      <replace>coData</replace>
+      <replace>线索</replace>
+      <replace>width: 150</replace>
+      <replace>layui-col-md2</replace>
+      <replace>layui-col-md3</replace>
+      <replace>layui-col-md1</replace>
+      <replace>managerName</replace>
+      <replace>cancle</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="lqy02" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/page/org.html" />
+        <option value="$PROJECT_DIR$/page/follow-warning.html" />
+        <option value="$PROJECT_DIR$/page/traffic-statistic .html" />
+        <option value="$PROJECT_DIR$/page/customer-manage.html" />
+        <option value="$PROJECT_DIR$/page/end-BO.html" />
+        <option value="$PROJECT_DIR$/page/business-allot.html" />
+        <option value="$PROJECT_DIR$/page/expiry-Bo-detail.html" />
+        <option value="$PROJECT_DIR$/page/traffic-statistic.html" />
+        <option value="$PROJECT_DIR$/page/expiry-BO.html" />
+        <option value="$PROJECT_DIR$/import.html" />
+        <option value="$PROJECT_DIR$/js/index.js" />
+        <option value="$PROJECT_DIR$/page/js/city.js" />
+        <option value="$PROJECT_DIR$/page/js/area.js" />
+        <option value="$PROJECT_DIR$/js/lay-module/layarea/layarea.js" />
+        <option value="$PROJECT_DIR$/js/lay-config.js" />
+        <option value="$PROJECT_DIR$/page/import.html" />
+        <option value="$PROJECT_DIR$/page/user.html" />
+        <option value="$PROJECT_DIR$/page/js/license.js" />
+        <option value="$PROJECT_DIR$/api/init.json" />
+        <option value="$PROJECT_DIR$/api/listData.json" />
+        <option value="$PROJECT_DIR$/page/org-add.html" />
+        <option value="$PROJECT_DIR$/page/repeatClues.html" />
+        <option value="$PROJECT_DIR$/page/follow-records.html" />
+        <option value="$PROJECT_DIR$/page/login.html" />
+        <option value="$PROJECT_DIR$/page/js/common.js" />
+        <option value="$PROJECT_DIR$/page/returnRecord.html" />
+        <option value="$PROJECT_DIR$/page/user-password.html" />
+        <option value="$PROJECT_DIR$/page/order-list.html" />
+        <option value="$PROJECT_DIR$/page/reviewHistory.html" />
+        <option value="$PROJECT_DIR$/page/repeatCluesDetail.html" />
+        <option value="$PROJECT_DIR$/page/business-list-detail.html" />
+        <option value="$PROJECT_DIR$/page/welcome.html" />
+        <option value="$PROJECT_DIR$/page/adjustment.html" />
+        <option value="$PROJECT_DIR$/page/business-follow.html" />
+        <option value="$PROJECT_DIR$/page/css/page.css" />
+        <option value="$PROJECT_DIR$/css/public.css" />
+        <option value="$PROJECT_DIR$/page/managerSetting.html" />
+        <option value="$PROJECT_DIR$/page/salerSetting.html" />
+        <option value="$PROJECT_DIR$/page/business-add.html" />
+        <option value="$PROJECT_DIR$/js/lay-module/layuimini/layuimini.js" />
+        <option value="$PROJECT_DIR$/page/screeningResult.html" />
+        <option value="$PROJECT_DIR$/page/user-add-1.html" />
+        <option value="$PROJECT_DIR$/page/business-list.html" />
+        <option value="$PROJECT_DIR$/js/httpIntercept.js" />
+        <option value="$PROJECT_DIR$/page/order-list-detail.html" />
+        <option value="$PROJECT_DIR$/page/follow-detail.html" />
+        <option value="$PROJECT_DIR$/page/returnRecord-detail.html" />
+        <option value="$PROJECT_DIR$/js/lay-module/zlhjConfig/zlhjConfig.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/impotExcel.js" />
+        <option value="$PROJECT_DIR$/page/user-add.html" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="324" />
+    <option name="width" value="1604" />
+    <option name="height" value="884" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="telemarket" type="b2602c69:ProjectViewProjectNode" />
+              <item name="telemarket" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="telemarket" type="b2602c69:ProjectViewProjectNode" />
+              <item name="telemarket" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="telemarket" type="b2602c69:ProjectViewProjectNode" />
+              <item name="telemarket" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="telemarket" type="b2602c69:ProjectViewProjectNode" />
+              <item name="telemarket" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="removeAttr&#9;null&#9;null" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\zlhj\apache-tomcat-zlhj\webapps\telemarket\js" />
+      <recent name="D:\zlhj\apache-tomcat-zlhj\webapps\tds\page" />
+      <recent name="D:\zlhj\apache-tomcat-zlhj\webapps\tds\js\lay-module" />
+      <recent name="D:\zlhj\apache-tomcat-zlhj\webapps\tds\js" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\zlhj\apache-tomcat-zlhj\webapps\telemarket\page" />
+      <recent name="D:\zlhj\apache-tomcat-zlhj\webapps\telemarket\images" />
+      <recent name="D:\zlhj\apache-tomcat-zlhj\webapps\telemarket\page\js" />
+      <recent name="D:\zlhj\apache-tomcat-zlhj\webapps\telemarket\demos" />
+      <recent name="D:\zlhj\apache-tomcat-zlhj\webapps\tds-v2\api" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8320c8f0-dcd0-4a0d-b751-f108717ccdb7" name="Default Changelist" comment="" />
+      <changelist id="fae9b4bd-b060-4a7f-a9eb-e7a6540382ed" name="Revert: 待跟进商机页面停留当前页码" comment="" />
+      <changelist id="0535c237-fbb0-499e-8ea3-b3e3681ae402" name="Revert: 跟进记录缺失失效状态" comment="" />
+      <created>1573277026965</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1573277026965</updated>
+      <workItem from="1573277028229" duration="33590000" />
+      <workItem from="1573366661317" duration="16695000" />
+      <workItem from="1573436423732" duration="13167000" />
+      <workItem from="1573459791893" duration="22690000" />
+      <workItem from="1573523071180" duration="48199000" />
+      <workItem from="1573627288480" duration="3124000" />
+      <workItem from="1573632666602" duration="6337000" />
+      <workItem from="1573696053290" duration="15380000" />
+      <workItem from="1574131263673" duration="6000" />
+      <workItem from="1574131336319" duration="43000" />
+      <workItem from="1574132020777" duration="34000" />
+      <workItem from="1574137571426" duration="18000" />
+      <workItem from="1574144566701" duration="297000" />
+      <workItem from="1574153983581" duration="51000" />
+      <workItem from="1574154062339" duration="8000" />
+      <workItem from="1574157347959" duration="42000" />
+      <workItem from="1574157435306" duration="13000" />
+      <workItem from="1574160091069" duration="13000" />
+      <workItem from="1574160347999" duration="89000" />
+      <workItem from="1574221437501" duration="122000" />
+      <workItem from="1574319552879" duration="12000" />
+      <workItem from="1574777607903" duration="50000" />
+      <workItem from="1574850604575" duration="1323000" />
+      <workItem from="1576030269374" duration="43790000" />
+      <workItem from="1576201042265" duration="86513000" />
+      <workItem from="1577065453847" duration="21140000" />
+      <workItem from="1577151881842" duration="34580000" />
+      <workItem from="1577327721704" duration="1559000" />
+      <workItem from="1577341237589" duration="1403000" />
+      <workItem from="1577345137257" duration="3586000" />
+      <workItem from="1577349162661" duration="2343000" />
+      <workItem from="1578626282168" duration="62000" />
+      <workItem from="1578898831543" duration="551000" />
+      <workItem from="1583484001330" duration="250000" />
+      <workItem from="1583722495823" duration="1066000" />
+      <workItem from="1583735288893" duration="1421000" />
+      <workItem from="1583737199037" duration="351000" />
+      <workItem from="1583737664285" duration="343000" />
+      <workItem from="1583738103024" duration="604000" />
+      <workItem from="1583743779741" duration="1593000" />
+      <workItem from="1583745505235" duration="5255000" />
+      <workItem from="1583751419519" duration="13000" />
+      <workItem from="1583806468017" duration="23868000" />
+      <workItem from="1583895173667" duration="376000" />
+      <workItem from="1583896597020" duration="55000" />
+      <workItem from="1583896730618" duration="1144000" />
+      <workItem from="1583897918291" duration="48000" />
+      <workItem from="1583897993441" duration="69000" />
+      <workItem from="1583898102614" duration="50000" />
+      <workItem from="1583898199641" duration="3535000" />
+      <workItem from="1583907116465" duration="54000" />
+      <workItem from="1583907306439" duration="299000" />
+      <workItem from="1583907621622" duration="29000" />
+      <workItem from="1583907667928" duration="26000" />
+      <workItem from="1583907730097" duration="591000" />
+      <workItem from="1583908402327" duration="274000" />
+      <workItem from="1583908722063" duration="26000" />
+      <workItem from="1583908903448" duration="91000" />
+      <workItem from="1583909132238" duration="20000" />
+      <workItem from="1583909190126" duration="78000" />
+      <workItem from="1583909333461" duration="21000" />
+      <workItem from="1583909399801" duration="13610000" />
+      <workItem from="1583978250240" duration="17746000" />
+      <workItem from="1584004200995" duration="46000" />
+      <workItem from="1584004340483" duration="7461000" />
+      <workItem from="1584066236774" duration="812000" />
+      <workItem from="1584080058715" duration="11066000" />
+      <workItem from="1584093022812" duration="1471000" />
+      <workItem from="1584094757134" duration="4053000" />
+      <workItem from="1584325240302" duration="5302000" />
+      <workItem from="1584331021509" duration="6441000" />
+      <workItem from="1584348442664" duration="1883000" />
+      <workItem from="1584351232830" duration="77000" />
+      <workItem from="1584351314087" duration="5276000" />
+      <workItem from="1584356609163" duration="390000" />
+      <workItem from="1584357238370" duration="6500000" />
+      <workItem from="1584415849867" duration="61000" />
+      <workItem from="1584431639842" duration="2254000" />
+      <workItem from="1585132734242" duration="27000" />
+      <workItem from="1588230864486" duration="179000" />
+      <workItem from="1594104317670" duration="41000" />
+      <workItem from="1594105790319" duration="2669000" />
+      <workItem from="1594174571490" duration="227000" />
+      <workItem from="1594174968306" duration="61000" />
+      <workItem from="1594362613045" duration="1509000" />
+      <workItem from="1594364480658" duration="389000" />
+      <workItem from="1594365060992" duration="95000" />
+      <workItem from="1594365240077" duration="4660000" />
+      <workItem from="1594371096904" duration="1910000" />
+      <workItem from="1594869696576" duration="378000" />
+      <workItem from="1594892386440" duration="886000" />
+      <workItem from="1594893831906" duration="1301000" />
+      <workItem from="1594901005639" duration="155000" />
+      <workItem from="1594902151280" duration="1133000" />
+      <workItem from="1594951475308" duration="5500000" />
+      <workItem from="1594966009794" duration="8268000" />
+      <workItem from="1594977291486" duration="605000" />
+      <workItem from="1594977933762" duration="1421000" />
+      <workItem from="1594979539860" duration="1452000" />
+      <workItem from="1594982534214" duration="1047000" />
+      <workItem from="1595224001046" duration="10751000" />
+      <workItem from="1595235646604" duration="20502000" />
+      <workItem from="1595321330913" duration="10703000" />
+      <workItem from="1595386603954" duration="5547000" />
+      <workItem from="1595394877826" duration="9000" />
+      <workItem from="1595394933336" duration="60000" />
+      <workItem from="1595395040337" duration="7019000" />
+      <workItem from="1595404559500" duration="82142000" />
+      <workItem from="1595924380739" duration="68747000" />
+      <workItem from="1596162996903" duration="2263000" />
+      <workItem from="1596166216775" duration="455000" />
+      <workItem from="1596166690329" duration="337000" />
+      <workItem from="1596167048600" duration="25000" />
+      <workItem from="1596167104320" duration="12993000" />
+      <workItem from="1596421054359" duration="29844000" />
+      <workItem from="1596527224600" duration="446000" />
+      <workItem from="1596527693000" duration="12816000" />
+      <workItem from="1596600793488" duration="84000" />
+      <workItem from="1596600915513" duration="25000" />
+      <workItem from="1596603633053" duration="33000" />
+      <workItem from="1596604052564" duration="78000" />
+      <workItem from="1596604141564" duration="17000" />
+      <workItem from="1596604166273" duration="12000" />
+      <workItem from="1596607568412" duration="60000" />
+      <workItem from="1596608546016" duration="298000" />
+      <workItem from="1596610832631" duration="30000" />
+      <workItem from="1596610912545" duration="11000" />
+      <workItem from="1596611051532" duration="18000" />
+      <workItem from="1596611082729" duration="68000" />
+      <workItem from="1596612195225" duration="49000" />
+      <workItem from="1596612855946" duration="40000" />
+      <workItem from="1596612976663" duration="22000" />
+      <workItem from="1596613017271" duration="14000" />
+      <workItem from="1596613057664" duration="65000" />
+      <workItem from="1596613226508" duration="20000" />
+      <workItem from="1596613324939" duration="43000" />
+      <workItem from="1596613383052" duration="23000" />
+      <workItem from="1596613422186" duration="49000" />
+      <workItem from="1596613720627" duration="26000" />
+      <workItem from="1596613767307" duration="57000" />
+      <workItem from="1596614337043" duration="56000" />
+      <workItem from="1596614401311" duration="19000" />
+      <workItem from="1596620686067" duration="23000" />
+      <workItem from="1596623492688" duration="2190000" />
+      <workItem from="1596678897963" duration="61000" />
+      <workItem from="1596681152728" duration="154000" />
+      <workItem from="1596681335169" duration="960000" />
+      <workItem from="1596682601010" duration="9000" />
+      <workItem from="1596683441695" duration="1949000" />
+      <workItem from="1596695255214" duration="10021000" />
+      <workItem from="1596707760657" duration="1400000" />
+      <workItem from="1596709515966" duration="3609000" />
+      <workItem from="1596768869236" duration="391000" />
+      <workItem from="1596772754158" duration="23000" />
+      <workItem from="1597030220607" duration="1942000" />
+      <workItem from="1597040940805" duration="204000" />
+      <workItem from="1597041972402" duration="13549000" />
+      <workItem from="1597112933616" duration="71000" />
+      <workItem from="1597115354872" duration="32000" />
+      <workItem from="1597127578882" duration="13468000" />
+      <workItem from="1597220830854" duration="17425000" />
+      <workItem from="1597284161255" duration="7370000" />
+      <workItem from="1597300707887" duration="111000" />
+      <workItem from="1597301323345" duration="22581000" />
+      <workItem from="1597394914268" duration="968000" />
+      <workItem from="1597398510154" duration="25413000" />
+      <workItem from="1597633010938" duration="47000" />
+      <workItem from="1597649675943" duration="23593000" />
+      <workItem from="1597737873886" duration="224000" />
+      <workItem from="1597738098875" duration="56217000" />
+      <workItem from="1597993506157" duration="274000" />
+      <workItem from="1597999991572" duration="2986000" />
+      <workItem from="1598004306100" duration="46000" />
+      <workItem from="1598005809413" duration="1376000" />
+      <workItem from="1598008845488" duration="17000" />
+      <workItem from="1598009128990" duration="32000" />
+      <workItem from="1598011069599" duration="35000" />
+      <workItem from="1598011533624" duration="495000" />
+      <workItem from="1598012307916" duration="691000" />
+      <workItem from="1598013122818" duration="135000" />
+      <workItem from="1598013389791" duration="26000" />
+      <workItem from="1598013531906" duration="4000" />
+      <workItem from="1598013608966" duration="22000" />
+      <workItem from="1598239800481" duration="216000" />
+      <workItem from="1598241004847" duration="9000" />
+      <workItem from="1598241018963" duration="173000" />
+      <workItem from="1598249955753" duration="286000" />
+      <workItem from="1598252313795" duration="8565000" />
+      <workItem from="1598267251379" duration="1656000" />
+      <workItem from="1598324163978" duration="1506000" />
+      <workItem from="1598328042057" duration="13000" />
+      <workItem from="1598336597818" duration="973000" />
+      <workItem from="1598342752872" duration="4536000" />
+      <workItem from="1598348939618" duration="127000" />
+      <workItem from="1598349371053" duration="10000" />
+      <workItem from="1598351071993" duration="602000" />
+      <workItem from="1598422419810" duration="4066000" />
+      <workItem from="1598428910576" duration="6000" />
+      <workItem from="1598432198039" duration="6000" />
+      <workItem from="1598436823541" duration="4890000" />
+      <workItem from="1598495664503" duration="451000" />
+      <workItem from="1598509617404" duration="4461000" />
+      <workItem from="1598514584438" duration="50000" />
+      <workItem from="1598514644108" duration="256000" />
+      <workItem from="1598515012420" duration="1746000" />
+      <workItem from="1598516794533" duration="22796000" />
+      <workItem from="1598926453021" duration="41641000" />
+      <workItem from="1599103767675" duration="12805000" />
+      <workItem from="1599129524480" duration="9047000" />
+      <workItem from="1599444901999" duration="21974000" />
+      <workItem from="1599617062925" duration="28761000" />
+      <workItem from="1599725317289" duration="26000" />
+      <workItem from="1599725786171" duration="24000" />
+      <workItem from="1599728300234" duration="20979000" />
+      <workItem from="1600141700906" duration="1534000" />
+      <workItem from="1600156762368" duration="1174000" />
+      <workItem from="1600164321258" duration="600000" />
+      <workItem from="1600227517169" duration="380000" />
+      <workItem from="1600743846045" duration="856000" />
+      <workItem from="1602556244045" duration="355000" />
+      <workItem from="1602556684553" duration="107000" />
+      <workItem from="1602585463148" duration="2185000" />
+      <workItem from="1602660765073" duration="870000" />
+      <workItem from="1602665327067" duration="3181000" />
+      <workItem from="1602727334756" duration="9000" />
+      <workItem from="1602732324569" duration="104000" />
+      <workItem from="1602733107793" duration="196000" />
+      <workItem from="1602751195861" duration="1860000" />
+      <workItem from="1603789655539" duration="625000" />
+      <workItem from="1603956117318" duration="1391000" />
+      <workItem from="1604283300368" duration="606000" />
+      <workItem from="1604714701077" duration="966000" />
+      <workItem from="1604976683421" duration="12000" />
+      <workItem from="1606376171922" duration="4774000" />
+      <workItem from="1607927319134" duration="5273000" />
+      <workItem from="1607934903122" duration="45440000" />
+      <workItem from="1608185940580" duration="2644000" />
+      <workItem from="1608188642431" duration="6000" />
+      <workItem from="1608189931486" duration="3510000" />
+      <workItem from="1608196416580" duration="548000" />
+      <workItem from="1608196972000" duration="107000" />
+      <workItem from="1608197178276" duration="2142000" />
+      <workItem from="1608273893232" duration="541000" />
+      <workItem from="1608284414815" duration="104000" />
+      <workItem from="1608517679479" duration="4578000" />
+      <workItem from="1608543051852" duration="126000" />
+      <workItem from="1608623478947" duration="1603000" />
+      <workItem from="1608627281130" duration="102000" />
+      <workItem from="1608627387327" duration="2000" />
+      <workItem from="1608629407041" duration="1237000" />
+      <workItem from="1608720470961" duration="1431000" />
+      <workItem from="1608799525469" duration="1401000" />
+      <workItem from="1608801173806" duration="8000" />
+      <workItem from="1608803589394" duration="2020000" />
+      <workItem from="1608868611398" duration="11130000" />
+      <workItem from="1609141129600" duration="1931000" />
+      <workItem from="1609295410621" duration="4340000" />
+      <workItem from="1609311277333" duration="694000" />
+      <workItem from="1610596084751" duration="50000" />
+      <workItem from="1614062149855" duration="2478000" />
+      <workItem from="1618387939736" duration="299000" />
+      <workItem from="1618553620181" duration="190000" />
+      <workItem from="1618813237497" duration="1173000" />
+    </task>
+    <task id="LOCAL-00008" summary="待跟进商机详情,跟进记录">
+      <created>1573385094389</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1573385094389</updated>
+    </task>
+    <task id="LOCAL-00009" summary="待跟进详情">
+      <created>1573446098209</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1573446098209</updated>
+    </task>
+    <task id="LOCAL-00010" summary="待跟进倒计时">
+      <created>1573477049859</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1573477049859</updated>
+    </task>
+    <task id="LOCAL-00011" summary="待跟进详情联系方式判断，跟进结论判断，刷新，跟进记录traceId">
+      <created>1573489711154</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1573489711154</updated>
+    </task>
+    <task id="LOCAL-00012" summary="修改机构管理的上级机构，待跟进详情更新">
+      <created>1573530072636</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1573530072636</updated>
+    </task>
+    <task id="LOCAL-00013" summary="bug4705:用户名为空提示">
+      <created>1573530846652</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1573530846652</updated>
+    </task>
+    <task id="LOCAL-00014" summary="新建商机联系方式">
+      <created>1573539907664</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1573539907664</updated>
+    </task>
+    <task id="LOCAL-00015" summary="校验邮箱格式">
+      <created>1573540258948</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1573540258948</updated>
+    </task>
+    <task id="LOCAL-00016" summary="机构管理新增页面保存，用户管理新增保存优化">
+      <created>1573548205214</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1573548205214</updated>
+    </task>
+    <task id="LOCAL-00017" summary="电话录音下载，跟进记录">
+      <created>1573557529753</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1573557529753</updated>
+    </task>
+    <task id="LOCAL-00018" summary="倒计时，跟踪记录调用，机构必填去除">
+      <created>1573573092475</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1573573092475</updated>
+    </task>
+    <task id="LOCAL-00019" summary="登记日期格式，是否接受分配弹框定时">
+      <created>1573579676842</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1573579676842</updated>
+    </task>
+    <task id="LOCAL-00020" summary="登记日期格式">
+      <created>1573581984451</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1573581984451</updated>
+    </task>
+    <task id="LOCAL-00021" summary="录音序号">
+      <created>1573582875342</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1573582875342</updated>
+    </task>
+    <task id="LOCAL-00022" summary="录音序号">
+      <created>1573702875295</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1573702875296</updated>
+    </task>
+    <task id="LOCAL-00023" summary="去脱敏显示，电话号码显示全部">
+      <created>1573703314168</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1573703314168</updated>
+    </task>
+    <task id="LOCAL-00024" summary="首页">
+      <created>1573715935475</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1573715935475</updated>
+    </task>
+    <task id="LOCAL-00025" summary="首页">
+      <created>1576223471761</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1576223471761</updated>
+    </task>
+    <task id="LOCAL-00026" summary="待跟进商机页面停留当前页码">
+      <created>1576225232202</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1576225232202</updated>
+    </task>
+    <task id="LOCAL-00027" summary="新建商机保存拦截，话务统计日期，待跟进详情页跟进记录移交修改">
+      <created>1576575729612</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1576575729612</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Revert: 待跟进商机页面停留当前页码">
+      <created>1576636568468</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1576636568468</updated>
+    </task>
+    <task id="LOCAL-00029" summary="简单修改">
+      <created>1576641780683</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1576641780683</updated>
+    </task>
+    <task id="LOCAL-00030" summary="修改失效商机详情的传参，带根基详情的移交至销售，主管接口">
+      <created>1576656180677</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1576656180677</updated>
+    </task>
+    <task id="LOCAL-00031" summary="失效商机，结束商机的查询条件控制，详情改变管理人员角色为3">
+      <created>1576725522595</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1576725522595</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Revert: 待跟进商机页面停留当前页码">
+      <created>1576747845756</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1576747845756</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Revert: 待跟进商机页面停留当前页码">
+      <created>1576747975301</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1576747975301</updated>
+    </task>
+    <task id="LOCAL-00034" summary="新建商机，老用户不可新建">
+      <created>1576749828691</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1576749828691</updated>
+    </task>
+    <task id="LOCAL-00035" summary="失效，结束详情页拾取后，先弹出提示，然后关闭当前页">
+      <created>1576750895491</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1576750895491</updated>
+    </task>
+    <task id="LOCAL-00036" summary="跟进详情移交优化">
+      <created>1576808447302</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1576808447302</updated>
+    </task>
+    <task id="LOCAL-00037" summary="修复5084bug，调整重新分配至主管客服，移交至销售">
+      <created>1577074060702</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1577074060702</updated>
+    </task>
+    <task id="LOCAL-00038" summary="BUG5087&#9;, 商机清单-增加失效value值">
+      <created>1577082436036</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1577082436036</updated>
+    </task>
+    <task id="LOCAL-00039" summary="bug5090修复，联系方式脱敏显示">
+      <created>1577088313389</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1577088313389</updated>
+    </task>
+    <task id="LOCAL-00040" summary="bug5039,管理人员把“拾取”改为“移交”">
+      <created>1577091429982</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1577091429982</updated>
+    </task>
+    <task id="LOCAL-00041" summary="修复bug5095，待跟进页面校验销售人员不为空">
+      <created>1577094352205</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1577094352205</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Revert: 待跟进商机页面停留当前页码">
+      <created>1577153196084</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1577153196084</updated>
+    </task>
+    <task id="LOCAL-00043" summary="处理主管客服跟销售人员的入参均为userId">
+      <created>1577159530419</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1577159530419</updated>
+    </task>
+    <task id="LOCAL-00044" summary="修复bug5103,5104,“编辑”改为“详情”，销售加载两遍">
+      <created>1577160747565</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1577160747565</updated>
+    </task>
+    <task id="LOCAL-00045" summary="5101客户其他联系方式去除增加功能">
+      <created>1577174889235</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1577174889235</updated>
+    </task>
+    <task id="LOCAL-00046" summary="修复5097,管理人员选择移交给销售，状态为待跟进">
+      <created>1577244041573</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1577244041573</updated>
+    </task>
+    <task id="LOCAL-00047" summary="4681,重置密码">
+      <created>1577248587571</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1577248587571</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Revert: 待跟进商机页面停留当前页码">
+      <created>1577261573576</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1577261573576</updated>
+    </task>
+    <task id="LOCAL-00049" summary="bug5125，修改文案">
+      <created>1577263610231</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1577263610231</updated>
+    </task>
+    <task id="LOCAL-00050" summary="跟进记录缺失失效状态">
+      <created>1577271197028</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1577271197029</updated>
+    </task>
+    <task id="LOCAL-00051" summary="还原index">
+      <created>1577271509063</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1577271509063</updated>
+    </task>
+    <task id="LOCAL-00052" summary="失效，部分公海池登记机构为全部机构">
+      <created>1577347986386</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1577347986386</updated>
+    </task>
+    <task id="LOCAL-00053" summary="bug5131,把“重新分配销售”修改为“重新分配”">
+      <created>1577348130768</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1577348130768</updated>
+    </task>
+    <task id="LOCAL-00054" summary="出版">
+      <created>1597738334064</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1597738334065</updated>
+    </task>
+    <task id="LOCAL-00055" summary="二期">
+      <created>1598495844049</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1598495844049</updated>
+    </task>
+    <task id="LOCAL-00056" summary="二期">
+      <created>1598509808174</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1598509808174</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1302312000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18017058" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32998884" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.5830546" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32998884" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32998884" />
+      <window_info anchor="bottom" id="Messages" order="11" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Remote Host" order="3" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23400854" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32998884" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.5830546" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32998884" />
+      <window_info anchor="bottom" id="Messages" order="11" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Remote Host" order="3" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="新建商机保存拦截，话务统计日期，待跟进详情页跟进记录移交修改" />
+    <MESSAGE value="简单修改" />
+    <MESSAGE value="修改失效商机详情的传参，带根基详情的移交至销售，主管接口" />
+    <MESSAGE value="失效商机，结束商机的查询条件控制，详情改变管理人员角色为3" />
+    <MESSAGE value="新建商机，老用户不可新建" />
+    <MESSAGE value="失效，结束详情页拾取后，先弹出提示，然后关闭当前页" />
+    <MESSAGE value="跟进详情移交优化" />
+    <MESSAGE value="修复5084bug，调整重新分配至主管客服，移交至销售" />
+    <MESSAGE value="BUG5087&#9;, 商机清单-增加失效value值" />
+    <MESSAGE value="bug5090修复，联系方式脱敏显示" />
+    <MESSAGE value="bug5039,管理人员把“拾取”改为“移交”" />
+    <MESSAGE value="修复bug5095，待跟进页面校验销售人员不为空" />
+    <MESSAGE value="处理主管客服跟销售人员的入参均为userId" />
+    <MESSAGE value="修复bug5103,5104,“编辑”改为“详情”，销售加载两遍" />
+    <MESSAGE value="5101客户其他联系方式去除增加功能" />
+    <MESSAGE value="修复5097,管理人员选择移交给销售，状态为待跟进" />
+    <MESSAGE value="4681,重置密码" />
+    <MESSAGE value="Revert: 待跟进商机页面停留当前页码" />
+    <MESSAGE value="bug5125，修改文案" />
+    <MESSAGE value="跟进记录缺失失效状态" />
+    <MESSAGE value="还原index" />
+    <MESSAGE value="失效，部分公海池登记机构为全部机构" />
+    <MESSAGE value="bug5131,把“重新分配销售”修改为“重新分配”" />
+    <MESSAGE value="出版" />
+    <MESSAGE value="二期" />
+    <option name="LAST_COMMIT_MESSAGE" value="二期" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="222" height="321" key="Git.Branch.Popup" />
+    <state width="222" height="321" key="Git.Branch.Popup/1920.1080/1920.1080" />
+    <state width="222" height="321" key="Git.Branch.Popup@1920.1080" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="17108" column="17" selection-start-line="17108" selection-start-column="17" selection-end-line="17108" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/lay-module/layarea/layarea.js" />
+    <entry file="file://$PROJECT_DIR$/js/ajaxhook.min.js" />
+    <entry file="file://$PROJECT_DIR$/page/js/license.js" />
+    <entry file="file://$PROJECT_DIR$/page/traffic-statistic.html" />
+    <entry file="file://$PROJECT_DIR$/js/lay-module/enhanceForm/enhanceForm.js" />
+    <entry file="file://$PROJECT_DIR$/js/lay-config.js" />
+    <entry file="file://$PROJECT_DIR$/page/org-add.html" />
+    <entry file="file://$PROJECT_DIR$/page/customer-manage.html" />
+    <entry file="file://$PROJECT_DIR$/page/login.html" />
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/browser.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="45" column="13" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore" />
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/resources/html5-schema/html5/phrase.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="79" column="14" selection-start-line="79" selection-start-column="14" selection-end-line="79" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/repeatClues.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1794" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/user-password.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="89" column="28" lean-forward="true" selection-start-line="89" selection-start-column="28" selection-end-line="89" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/expiry-Bo-detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="966" column="12" selection-start-line="966" selection-start-column="12" selection-end-line="966" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/business-allot.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/repeatCluesDetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1339">
+          <caret line="140" column="41" lean-forward="true" selection-start-line="140" selection-start-column="41" selection-end-line="140" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/reviewHistory.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3795">
+          <caret line="165" selection-start-line="165" selection-end-line="165" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/business-accept.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1219">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/resources/html5-schema/html5/web-forms.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="15" column="36" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/init.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/adjustment.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="155" column="48" selection-start-line="155" selection-start-column="44" selection-end-line="155" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/business-list-detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2688">
+          <caret line="462" column="25" selection-start-line="462" selection-start-column="12" selection-end-line="462" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/css/page.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="53" column="24" lean-forward="true" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/public.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="7" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/lay-module/tableSelect/tableSelect.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="91" column="51" lean-forward="true" selection-start-line="91" selection-start-column="51" selection-end-line="91" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/salerSetting.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6440">
+          <caret line="280" column="67" selection-start-line="280" selection-start-column="67" selection-end-line="280" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/qrcode.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/follow-records.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2806">
+          <caret line="223" column="24" selection-start-line="223" selection-start-column="24" selection-end-line="223" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/managerSetting.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="312" column="92" lean-forward="true" selection-start-line="312" selection-start-column="92" selection-end-line="312" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/user-add-1.html" />
+    <entry file="file://$PROJECT_DIR$/page/business-add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2994">
+          <caret line="115" column="114" lean-forward="true" selection-start-line="115" selection-start-column="114" selection-end-line="115" selection-end-column="114" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/lay-module/layuimini/layuimini.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="56" column="58" lean-forward="true" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/httpIntercept.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="3" lean-forward="true" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/business-list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="801">
+          <caret line="442" column="50" selection-start-line="442" selection-start-column="50" selection-end-line="442" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/screeningResult.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="801">
+          <caret line="273" column="36" selection-start-line="273" selection-start-column="36" selection-end-line="273" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/order-list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="201" column="42" selection-start-line="201" selection-start-column="38" selection-end-line="201" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/returnRecord.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="268" column="32" lean-forward="true" selection-start-line="268" selection-start-column="11" selection-end-line="268" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/js/city.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/js/area.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-234">
+          <caret line="38" column="23" lean-forward="true" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/impotExcel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1426">
+          <caret line="62" column="101" selection-start-line="62" selection-start-column="101" selection-end-line="62" selection-end-column="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/welcome.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8188">
+          <caret line="356" column="65" selection-start-line="356" selection-start-column="49" selection-end-line="356" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/order-list-detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19274">
+          <caret line="872" column="62" selection-start-line="872" selection-start-column="54" selection-end-line="872" selection-end-column="62" />
+          <folding>
+            <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#3;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#4;n#form#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/business-follow.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7222">
+          <caret line="314" column="45" selection-start-line="314" selection-start-column="24" selection-end-line="314" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/follow-detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9568">
+          <caret line="416" column="45" selection-start-line="416" selection-start-column="45" selection-end-line="416" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/returnRecord-detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17089">
+          <caret line="743" column="17" selection-start-line="743" selection-start-column="17" selection-end-line="743" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/js/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="21" column="32" lean-forward="true" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/lay-module/zlhjConfig/zlhjConfig.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="197" column="22" selection-start-line="197" selection-start-column="22" selection-end-line="197" selection-end-column="22" />
+          <folding>
+            <element signature="n#style#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/user-add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="197" column="40" lean-forward="true" selection-start-line="197" selection-start-column="40" selection-end-line="197" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>重复线索</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="../css/public.css" media="all">
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <fieldset class="layui-elem-field layuimini-search">
+            <legend>查询条件</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" lay-filter="condition">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">客户姓名</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="customerName" name="customerName" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">手机号码</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="customerContactWay" name="customerContactWay" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <a class="layui-btn" lay-submit="" lay-filter="search">查询</a>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+        </fieldset>
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+        <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit">详情</a>
+            <!-- <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a> -->
+        </script>
+    </div>
+</div>
+<script src="../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+<script src="js/common.js?v=1.0.4"></script>
+<script src="../js/ajaxhook.min.js?v=1.0.4" charset="utf-8"></script>
+<script src="../js/httpIntercept.js?v=1.0.4" charset="utf-8"></script>
+<script>
+    layui.use(['form', 'table', 'laydate','zlhjConfig'], function () {
+        let $ = layui.jquery,
+            form = layui.form,
+            laydate = layui.laydate,
+            zlhjConfig = layui.zlhjConfig,
+            table = layui.table;
+
+        form.render("select");
+
+        let business_list_table = table.render({
+            elem: '#currentTableId',
+            toolbar: '<h5>查询结果</h5>',
+            defaultToolbar: ['filter'],
+            url: `${zlhjConfig.baseUrl}/customer/getRepeatCustomerList`,
+            method: 'POST',
+            contentType: 'application/json',
+            request: {
+                pageName: 'currentPage', //页码的参数名称，默认：page
+                limitName: 'pageSize' //每页数据量的参数名，默认：limit
+            },
+            response: {
+                statusCode: 'Y'
+            },
+            where: {
+                "customerName": "",
+                "customerContactWay": ""
+            },
+            parseData: function (res) {
+                return {
+                    code: res.state, //解析接口状态
+                    msg: res.msg, //解析提示文本
+                    count: res.customerList.total, //解析数据长度
+                    data: res.customerList.records//解析数据列表
+                };
+            },
+            cols: [[
+                {field: 'customerId', minWidth: 230, title: '客户编号', align: "center"},
+                {field: 'customerName', minWidth: 150, title: '客户姓名', align: "center"},
+                {field: 'customerContactWay', minWidth: 200, title: '手机号码', align: "center",
+                    //     templet: (res) => {
+                    //         var s = res.boCustomerContactWay;
+                    //         return s.substr(0,3) + "****" + s.substr(s.length - 4);
+                    // }
+                },
+                {title: '操作', minWidth: 88, templet: '#currentTableBar', fixed: "right", align: "center"}
+            ]],
+            limits: [1,10, 20, 50, 100],
+            limit: 10,
+            page: true
+        });
+
+
+        /**
+         * 根据条件查询符合的线索列表
+         */
+        form.on('submit(search)', function (res) {
+            console.log(res.field)
+            business_list_table.reload({
+                where: {
+                    "customerName": res.field.customerName,
+                    "customerContactWay": res.field.customerContactWay,
+                },
+                page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+            });
+        });
+       // 跳转至完成线索详情页面
+        table.on('tool(currentTableFilter)', (obj) => {
+            let data = obj.data;
+            if (obj.event === 'edit') {
+                layer.open({
+                    type: 2,
+                    title: '重复线索详情',
+                    shadeClose: true,
+                    shade: false,
+                    maxmin: true, //开启最大化最小化按钮
+                    area: ['100%', '100%'],
+                    content: `./repeatCluesDetail.html`,
+                    success: (layero, index) => {
+                        let body = layer.getChildFrame('body', index);//建立父子联系
+                        let iframeWin = window[layero.find('iframe')[0]['name']];
+                        body.find('#custId').val(data.customerId);
+                    },
+                    end: () => {
+                        business_list_table.reload();
+                    }
+                });
+            }
+        });
+
+
+    });
+</script>
+<script>
+
+</script>
+
+</body>
+</html>

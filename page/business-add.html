@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>新建线索</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="../css/public.css" media="all">
+    <!-- <link rel="stylesheet" href="../js/lay-module/inputTags/inputTags.css" media="all"> -->
+    <style>
+        .layui-form-label{
+            width: 85px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <!-- 客户基本信息 -->
+        <input type="hidden" id="boIdHidden" value=""/>
+        <!-- 其他联系方式列表操作是否可操作，默认可操作 -->
+        <input type="hidden" id="otherContacts_operation" value="0"/>
+        <div id="customerInfoDiv">
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend>客户基本信息</legend>
+        </fieldset>
+        <!-- 隐藏栏位 -->
+        <!-- <input type="hidden" id="orgId"/> -->
+        <form class="layui-form" action="" lay-filter="orgInfo" id="orgInfo">
+            <!--<input type="hidden" id="boSaleUserId" name="boSaleUserId"/>-->
+            <div class="layui-form-item">
+                <div class="layui-inline layui-col-xs12 layui-col-sm6 layui-col-md6">
+                    <label class="layui-form-label">客户姓名</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="customerName" name="customerName" lay-filter="customerName" lay-verify="required" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline" style="line-height:37px">
+                    <label class="layui-form-label">客户编号</label>
+                    <div class="layui-input-inline">
+                        <font id="customerNo" lay-filter="customerNo"></font>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline layui-col-xs12 layui-col-sm6 layui-col-md6">
+                    <label class="layui-form-label">主要联系方式</label>
+                    <div class="layui-input-inline">
+                        <select lay-verify="required" name="customerContactType" id="customerContactType" lay-filter="customerContactType">
+                            <!-- 1:座机,2:手机,3:QQ,4:微信,5:E-mail -->
+                            <!--<option value="">请选择</option>-->
+                            <option value="1">手机</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">主要联系方式</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="customerContactWay" name="customerContactWay" lay-verify="required|phone" autocomplete="off" class="layui-input" lay-filter="customerContactWay" maxlength="11">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline layui-col-xs12 layui-col-sm6 layui-col-md6">
+                    <label class="layui-form-label">身份证号码</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="IDCard" name="IDCard" lay-verify="required" autocomplete="off" class="layui-input" lay-filter="IDCard" maxlength="18" x>
+                    </div>
+                </div>
+                <div class="layui-inline isShowIdCard" style="display: none">
+                    <label class="layui-form-label">户籍</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="census" name="census" autocomplete="off" class="layui-input" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item isShowIdCard" style="display: none">
+                <div class="layui-inline  layui-col-xs12 layui-col-sm6 layui-col-md6">
+                    <label class="layui-form-label">年龄</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="age" name="age" autocomplete="off" class="layui-input" disabled>
+                    </div>
+                </div>
+                <div class="layui-inline ">
+                    <label class="layui-form-label">性别</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="sex" name="sex" autocomplete="off" class="layui-input" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item" id="cusInfoSubmitButDiv">
+                <div class="layui-input-block">
+                    <button id="cusInfoSubmitBut" type="button" class="layui-btn" lay-submit lay-filter="cusInfoSubmitBut">保存</button>
+                    <!-- <button id="reset" type="reset" class="layui-btn layui-btn-primary">重置</button> -->
+                </div>
+            </div>
+        </form>
+        </div>
+
+        <div id="businessInfoDiv" style="display:none">
+            <!--线索信息-->
+            <form class="layui-form" action="" lay-filter="businessInfo" id="businessInfo">
+            <!-- <div id="businessInfoDiv" style="display:none"> -->
+                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                    <legend>线索信息</legend>
+                </fieldset>
+                <!-- 线索信息中隐藏栏位 -->
+                <!-- 现归属机构 -->
+                <input id="boSaleOrgName" lay-filter="boSaleOrgName" type="hidden" value=""/>
+                <!-- 现归属人员 -->
+                <input id="boSaleUserName" lay-filter="boSaleUserName" type="hidden" value=""/>
+                <div class="layui-form-item" style="display:none" id="businessInfoHideDiv">
+                    <div class="layui-inline layui-col-xs12 layui-col-sm6 layui-col-md6" style="line-height:37px">
+                        <label class="layui-form-label">线索编号</label>
+                        <div class="layui-input-inline">
+                            <font id="businessNo" lay-filter="businessNo"></font>
+                        </div>
+                    </div>
+                    <div class="layui-inline" style="line-height:37px">
+                        <label class="layui-form-label">线索状态</label>
+                        <div class="layui-input-inline">
+                            <font id="businessStatus" lay-filter="businessStatus"></font>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline layui-col-xs12 layui-col-sm6 layui-col-md6">
+                        <label class="layui-form-label">业务类型</label>
+                        <div class="layui-input-inline">
+                            <select name="boType" class="boType" lay-filter="boType" lay-verify="required">
+                                <option value="">请选择</option>
+                                <option value="2">新车</option>
+                                <option value="3">车抵贷</option>
+                                <option value="4">二手车</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">线索来源</label>
+                        <div class="layui-input-inline">
+                            <input type="text" lay-filter="boCluesDescribe"  name="boCluesDescribe" autocomplete="off" class="layui-input" lay-verify="required" maxlength="50">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div id="area-picker">
+                        <div class="layui-inline  layui-col-xs12 layui-col-sm6 layui-col-md6">
+                            <label class="layui-form-label">业务区域</label>
+                            <div class="layui-input-inline">
+                                <select name="provinceCode" id="boProvince" class="province-selector" lay-filter="boProvince" lay-verify="required">
+                                    <option value="">省</option>
+                                </select>
+                            </div>
+                            <div class="layui-input-inline">
+                                <select name="cityCode" id="boCity" class="city-selector" lay-filter="boCity" lay-verify="required">
+                                    <option value="">市</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">贷款金额(元)</label>
+                        <div class="layui-input-inline">
+                            <input type="text" lay-filter="boRegisterAmount" lay-verify="required|customMoney" name="boRegisterAmount" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline layui-col-xs12 layui-col-sm6 layui-col-md6">
+                        <label class="layui-form-label">车牌所在地</label>
+                        <div class="layui-input-inline">
+                            <select name="boLicense" id="boLicense" lay-filter="boLicense" lay-verify="required">
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                        <div class="layui-input-inline">
+                            <select name="boLicenseLetter" id="boLicenseLetter" lay-filter="boLicenseLetter" lay-verify="required">
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">车辆品牌</label>
+                        <div class="layui-input-inline">
+                            <input type="text" lay-filter="boCarBrand"  name="boCarBrand" autocomplete="off" class="layui-input" lay-verify="required">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">关键字</label>
+                    <div class="layui-input-inline" id="tags">
+                        <input type="text" name="" id="inputTags" placeholder="输入后回车生成关键字" autocomplete="off">
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">备注</label>
+                    <div class="layui-input-block">
+                        <textarea id="boDesc" lay-filter="boDesc" name="boDesc" placeholder="请输入内容" class="layui-textarea" lay-verify="required" style="width:99.4%"></textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item" id="cusInfoButtonDiv" style="margin-bottom: 10%">
+                    <div class="layui-input-block">
+                        <button id="cusInfoButton" type="button" class="layui-btn" lay-submit lay-filter="cusInfoButton">保存</button>
+                    </div>
+                </div>
+        </form>
+        </div>
+
+
+    </div>
+</div>
+
+<script src="../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+<script src="js/common.js?v=1.0.4" charset="utf-8"></script>
+<script src="js/license.js" charset="utf-8"></script>
+<script src="../js/ajaxhook.min.js?v=1.0.4" charset="utf-8"></script>
+<script src="../js/httpIntercept.js?v=1.0.4" charset="utf-8"></script>
+<script>
+    layui.use(['layuimini', 'form', 'layedit', 'laydate', 'table', 'layarea', 'inputTags', 'enhanceForm', 'element','zlhjConfig'], function () {
+        var form = layui.form
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , laydate = layui.laydate
+            , table = layui.table
+            , layuimini = layui.layuimini
+            , layarea = layui.layarea
+            , inputTags = layui.inputTags
+            , enhanceForm = layui.enhanceForm
+            , element = layui.element
+            , zlhjConfig = layui.zlhjConfig
+            , $ = layui.jquery;
+
+        //权限设置
+        let user = layui.sessionData('sessionData').userSession;
+           // if (user.userRole === 3 ){//如果是 '管理人员 '则隐藏操作
+           //     $('#adjustmentBut').show();
+           // }else {
+           //     $('#adjustmentBut').hide();
+           // }
+
+        let tipDivCloseBut;
+        // 控制其他联系方式的
+        let otherContacts_operation = parseInt($('#otherContacts_operation').val())===0?false:true;
+        let orgInfoForm = new enhanceForm({
+                elem: '#orgInfo'
+            });
+        let businessInfoForm = new enhanceForm({
+                elem: '#businessInfo'
+            });
+
+        // 初始加载 业务区域
+        // layarea.render({
+        //     elem: '#area-picker',
+        //     data: {
+        //         province: '',
+        //         city: '',
+        //         county: '',
+        //     },
+        //     change: function (res) {
+        //         //选择城市的结果
+        //         console.log(res);
+        //         console.log(res.provinceCode,res.cityCode)
+        //         provinceCode = res.provinceCode
+        //         cityCode = res.cityCode
+        //     }
+        // });
+
+        let keyWordInfo = inputTags.render({
+            elem:'#inputTags',//定义输入框input对象
+            close: true,
+            // content: ['标题一','标题二'],//默认标签
+            // aldaBtn: true,//是否开启获取所有数据的按钮
+            done: function(value){ //回车后的回调
+                console.log(value)
+            }
+        });
+
+
+        init();
+        function init() {
+            //获取省列表
+            $.ajax({
+                type: "get",
+                url: `${zlhjConfig.baseUrl}/province/getAllProvince`,
+                dataType: "json",
+                contentType :'application/json',
+                success:function (data) {
+                    console.log(data)
+                    let provinceArr = data.province
+                    provinceArr.map(cur => {
+                        $("#boProvince").append(new Option(cur.name,cur.id))
+                    })
+                    form.render('select');
+
+                },
+                error:function (e) {
+                    console.log("error")
+                }
+            })
+
+            //车牌所在地
+            licenses.map(cur => {
+                $("#boLicense").append(new Option(cur.name,cur.code))
+            })
+            licensesLetter.map(cur => {
+                $('#boLicenseLetter').append(new Option(cur.name,cur.code));
+            })
+
+        }
+
+        let boProvince,boCity;
+        //根据省查询市
+        form.on('select(boProvince)',(res) => {
+            console.log('省 :', res);
+            let superiorId = res.value
+            boProvince  = res.elem[res.elem.selectedIndex].text
+            //获取市列表
+            $.ajax({
+                type: "get",
+                url: `${zlhjConfig.baseUrl}/city/getCity`,
+                data:{"superiorId":superiorId} ,
+                dataType: "json",
+                contentType :'application/json',
+                success:function (data) {
+                    $('#boCity').empty();
+                    $('#boCity').append(new Option('市',""))
+                    console.log(data)
+                    let cityArr = data.city
+                    cityArr.map(cur => {
+                        $("#boCity").append(new Option(cur.name,cur.id))
+                    })
+                    form.render('select');
+
+                },
+                error:function (e) {
+                    console.log("error")
+                }
+            })
+
+        })
+        //选择的市
+        form.on('select(boCity)',(res) => {
+            console.log('市 :', res);
+            boCity  = res.elem[res.elem.selectedIndex].text
+        })
+
+        //新建客户信息
+        let dataInfo;
+        function saveCusInfo(data) {
+            console.log(JSON.stringify(data.field));
+            console.log('-------------');
+
+            dataInfo = data.field
+
+            let IDCardFormat = checkIdCardNo(dataInfo.IDCard)
+            console.log("IDCardFormat",IDCardFormat)
+            if(IDCardFormat == false){
+                layer.msg("请输入正确的身份证号码",{icon:5})
+            }else{
+                // 检测用户开户状态
+                $.ajax(  {
+                    type: "post",
+                    url: `${zlhjConfig.baseUrl}/customer/getUserMsgInfoWhetherExist`,
+                    data:JSON.stringify(data.field) ,
+                    dataType: "json",
+                    contentType :'application/json',
+                    success:function (data) {
+                        console.log(data)
+                        if(data.flag === true){
+                            if(data.data.resultFlag == 1){
+                                layer.alert('该客户已存在！ ', {
+                                    skin: 'layui-layer-molv' //样式类名
+                                    ,closeBtn: 0,
+                                    btn: ['确认']
+                                }, function(){
+                                    orgInfoForm.disableAll();
+
+                                    $("#customerNo").text(data.data.customerId)
+                                    $('#businessInfoDiv').show();
+                                    $('#cusInfoSubmitButDiv').hide();
+                                    layer.close(layer.index);
+                                });
+                            }else if(data.data.resultFlag ==  0){
+                                layer.alert('该客户为新客户，是否需要开户？ ', {
+                                    skin: 'layui-layer-molv' //样式类名
+                                    ,closeBtn: 0,
+                                    btn: ['确认','取消']
+                                }, function(){
+                                    $.ajax({
+                                        type: "post",
+                                        url: `${zlhjConfig.baseUrl}/customer/createCustomerAccount`,
+                                        data: JSON.stringify(dataInfo),
+                                        dataType: "json",
+                                        contentType: 'application/json',
+                                        success:function (data) {
+                                            if(data.flag === true){
+                                                orgInfoForm.disableAll();
+                                                layer.msg(data.message, {icon: 1});
+                                                $("#customerNo").text(data.data.customerId)
+                                                $('#businessInfoDiv').show();
+                                                $('#cusInfoSubmitButDiv').hide();
+                                            }else{
+                                                layer.msg(data.message, {icon: 5},{time:1000});
+                                            }
+
+                                        },
+                                        error:function (e) {
+                                            console.log("error")
+                                        }
+                                    })
+
+                                    //身份证
+                                    let IdCard = $("#IDCard").val();
+                                    console.log("IdCard",IdCard)
+                                    if(IdCard != null && IdCard != ""){
+                                        //户籍
+                                        $("#census").val(IdCard.substr(0,6));
+                                        //年龄
+                                        let date = new Date();
+                                        let year = date.getFullYear();
+                                        let age = year - IdCard.substr(6,4);
+                                        $("#age").val(age);
+                                        //性别
+                                        let s = IdCard.substr(IdCard.length-2,1)
+                                        if(s % 2 == 0){
+                                            $("#sex").val("女");
+                                        }else{
+                                            $("#sex").val("男");
+                                        }
+
+                                        $(".isShowIdCard").show();
+                                    }
+
+                                });
+                            }
+                        }else{
+                            layer.msg(data.message, {icon: 5});
+                        }
+
+
+                    },
+                    error:function (e) {
+                        console.log("error")
+                    }
+                })
+
+            }
+
+            return false;
+        }
+        form.on('submit(cusInfoSubmitBut)',debounce(saveCusInfo,500));
+
+
+        //新建线索 保存客户+线索信息
+        $("#cusInfoButton").attr("disabled",false);
+        function saveAllInfo(data) {
+
+            console.log(JSON.stringify(data.field))
+            console.log("keyWordInfo",keyWordInfo.config.content);
+
+            let customerName = $("#customerName").val();
+            let customerContactType = $("#customerContactType").val();
+            let customerContactWay = $("#customerContactWay").val();
+            let customerNo = $("#customerNo").text();
+            let IDCard = $("#IDCard").val();
+            let boLicenseArea = data.field.boLicense + data.field.boLicenseLetter
+
+            let keyWordArr = keyWordInfo.config.content;
+            console.log("keyWordArr length",keyWordArr.length)
+            if(keyWordArr.length == 0){
+                layer.msg('请输入有效的关键字',{icon:5,anim:6});
+                $("#tags").css('border',"1px solid #FB7150")
+                setTimeout(function () {
+                    $("#tags").css('border',"1px solid #e6e6e6")
+                },3000)
+                clearTimeout();
+                return;
+            }
+
+            //判断关键字格式是否正确
+            if($('#inputTags').val().replace(/\s/g,'')!==''){
+                layer.msg('关键字格式不正确',{icon:5,anim:6});
+                return;
+            }
+
+            let dataInfo = $.extend(data.field,{"customerName":customerName,"customerContactType":customerContactType,"customerContactWay":customerContactWay,"customerNo":customerNo,"boProvince":boProvince,"boCity":boCity,"boKeyWord":keyWordInfo.config.content.join("|"),"boLicenseArea":boLicenseArea,"IDCard":IDCard})
+
+            console.log("dataInfo",dataInfo)
+
+            //保存按钮disabled
+            $("#cusInfoButton").attr("disabled",true);
+
+            $.ajax({
+                type: "post",
+                url: `${zlhjConfig.baseUrl}/businessOpportunity/addBussinessOpportunity`,
+                data:JSON.stringify(data.field) ,
+                dataType: "json",
+                contentType :'application/json',
+                success:function (data) {
+                    console.log(data)
+                    if(data.flag === true){
+                        let boIdVal = data.data.boId
+                        layer.alert("电销线索"+ data.data.boId + "已生成，请及时跟进", {
+                            skin: 'layui-layer-molv' //样式类名
+                            ,closeBtn: 0,
+                            btn: ['确认']
+                        }, function(){
+                            // window.location.reload();
+
+                            $("#cusInfoButton").hide();
+                            layer.close(layer.index);
+                            layer.open({
+                                type: 2,
+                                title: '线索跟进详情',
+                                shadeClose: true,
+                                shade: false,
+                                maxmin: false, //开启最大化最小化按钮
+                                closeBtn: 0,
+                                area: ['100%', '100%'],
+                                content: `./follow-detail.html?id=${data.boId}`,
+                                // data: {boid: `${data.boId}`},
+                                success: (layero, index) => {
+                                    let body = layer.getChildFrame('body', index);//建立父子联系
+                                    let iframeWin = window[layero.find('iframe')[0]['name']];
+                                    body.find('#boId').val(boIdVal);  //传boId给字iframe
+                                    body.find('#contactWayFlag').val(1);
+                                    body.find('#reset').hide();
+                                },
+                                end: () => {
+
+                                }
+                            });
+
+                        });
+                    }else{
+                        layer.msg(data.message, {icon: 5},{time:1000},function () {
+                            $("#cusInfoButton").attr("disabled",false);
+                        });
+                    }
+
+
+                },
+                error:function (e) {
+                    console.log("error")
+                }
+            })
+
+
+        }
+        form.on('submit(cusInfoButton)', debounce(saveAllInfo,500))
+
+
+        //自定义验证规则
+        form.verify({
+            title: function (value) {
+                if (value.length < 5) {
+                    return '标题至少得5个字符啊';
+                }
+            }
+            , pass: [
+                /^[\S]{6,12}$/
+                , '密码必须6到12位，且不能出现空格'
+            ]
+            , content: function (value) {
+                layedit.sync(editIndex);
+            },
+            customPhone: [/(^$)|^1\d{10}$/, '请输入正确的手机号'],
+            customEmail: [/(^$)|^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/, '邮箱格式不正确'],
+            customUrl: [/(^$)|(^#)|(^http(s*):\/\/[^\s]+\.[^\s]+)/, '链接格式不正确'],
+            customNumber: [/(^$)|^\d+$/, '只能填写数字'],
+            customMoney: [/(^$)|^(([1-9][0-9]*)|(([0]\.\d{1,2}|[1-9][0-9]*\.\d{1,2})))$/, '请填写正确的金额,最多两位小数'],
+            customDate: [/(^$)|^(\d{4})[-\/](\d{1}|0\d{1}|1[0-2])([-\/](\d{1}|0\d{1}|[1-2][0-9]|3[0-1]))*$/, '日期格式不正确'],
+            customIdentity: [/(^$)|(^\d{15}$)|(^\d{17}(x|X|\d)$)/, '请输入正确的身份证号']
+        });
+
+
+        //                 if (boInfoData.boKeyword!=null){
+        //                     let defaultContent = boInfoData.boKeyword.split("|");
+        //                     inputTags.render({
+        //                         elem:'#inputTags',//定义输入框input对象
+        //                         close: false,
+        //                         content: defaultContent,//默认标签
+        //                         // aldaBtn: true,//是否开启获取所有数据的按钮
+        //                         done: function(value){ //回车后的回调
+        //                             console.log(value)
+        //                         }
+        //                     });
+        //                 }
+
+        $('#customerName').focus();
+
+
+        //验证身份证
+        function checkIdCardNo(num) {
+            num = num.toUpperCase();           //身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X。
+            if (!(/(^\d{15}$)|(^\d{17}([0-9]|X)$)/.test(num))) {
+                //alert('身份证号长度不正确或不符合规定！');
+                return false;
+            }
+            //验证前2位，城市符合
+            var aCity={11:"北京",12:"天津",13:"河北",14:"山西",15:"内蒙古",21:"辽宁",22:"吉林",23:"黑龙江 ",31:"上海",32:"江苏",33:"浙江",34:"安徽",35:"福建",36:"江西",37:"山东",41:"河南",42:"湖北",43:"湖南",44:"广东",45:"广西",46:"海南",50:"重庆",51:"四川",52:"贵州",53:"云南",54:"西藏",61:"陕西",62:"甘肃",63:"青海",64:"宁夏",65:"新疆",71:"台湾",81:"香港",82:"澳门",91:"国外"};
+            if(aCity[parseInt(num.substr(0,2))]==null){
+                //alert('身份证号不正确或不符合规定！');
+                return false;
+            }
+            //alert('城市:'+aCity[parseInt(num.substr(0,2))]);
+
+            //下面分别分析出生日期和校验位
+            var len, re; len = num.length;
+            if (len == 15) {
+                re = new RegExp(/^(\d{6})(\d{2})(\d{2})(\d{2})(\d{3})$/);
+                var arrSplit = num.match(re);  //检查生日日期是否正确
+                var dtmBirth = new Date('19' + arrSplit[2] + '/' + arrSplit[3] + '/' + arrSplit[4]);
+                var bGoodDay; bGoodDay = (dtmBirth.getYear() == Number(arrSplit[2])) && ((dtmBirth.getMonth() + 1) == Number(arrSplit[3])) && (dtmBirth.getDate() == Number(arrSplit[4]));
+                if (!bGoodDay) {
+                    //alert('身份证号的出生日期不对！');
+                    return false;
+                } else { //将15位身份证转成18位 //校验位按照ISO 7064:1983.MOD 11-2的规定生成，X可以认为是数字10。
+                    var arrInt = new Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2);
+                    var arrCh = new Array('1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2');
+                    var nTemp = 0, i;
+                    num = num.substr(0, 6) + '19' + num.substr(6, num.length - 6);
+                    for(i = 0; i < 17; i ++) {
+                        nTemp += num.substr(i, 1) * arrInt[i];
+                    }
+                    num += arrCh[nTemp % 11];
+                    return true;
+                }
+            }
+            if (len == 18) {
+                re = new RegExp(/^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/);
+                var arrSplit = num.match(re);  //检查生日日期是否正确
+                var dtmBirth = new Date(arrSplit[2] + "/" + arrSplit[3] + "/" + arrSplit[4]);
+                var bGoodDay; bGoodDay = (dtmBirth.getFullYear() == Number(arrSplit[2])) && ((dtmBirth.getMonth() + 1) == Number(arrSplit[3])) && (dtmBirth.getDate() == Number(arrSplit[4]));
+                if (!bGoodDay) {
+                    //alert(dtmBirth.getYear());
+                    //alert(arrSplit[2]);
+                    //alert('身份证号的出生日期不对！');
+                    return false;
+                }
+                else { //检验18位身份证的校验码是否正确。 //校验位按照ISO 7064:1983.MOD 11-2的规定生成，X可以认为是数字10。
+                    var valnum;
+                    var arrInt = new Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2);
+                    var arrCh = new Array('1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2');
+                    var nTemp = 0, i;
+                    for(i = 0; i < 17; i ++) {
+                        nTemp += num.substr(i, 1) * arrInt[i];
+                    }
+                    valnum = arrCh[nTemp % 11];
+                    if (valnum != num.substr(17, 1)) {
+                        //alert('18位身份证的校验码不正确！应该为：' + valnum);
+                        //alert('18位身份证号的校验码不正确！');
+                        return false;
+                    }
+                    return true;
+                }
+            } return false;
+
+        }
+
+
+    });
+</script>
+</body>
+</html>

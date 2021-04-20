@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>待回访线索详情</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="css/page.css" media="all">
+    <link rel="stylesheet" href="../css/public.css" media="all">
+    <!-- <link rel="stylesheet" href="../js/lay-module/inputTags/inputTags.css" media="all"> -->
+    <style>
+        .layui-form-label{
+            width: 110px;
+        };
+        legend {
+            color:orange;
+        };
+        .layui-form-item .layui-input-inline {
+            display: block;
+            float: none;
+            left: 0px;
+            width: auto;
+            margin: 0 0 0px 120px;
+        };
+        #tags #inputTags[type='text'], #inputTags[type='text']:focus{
+            background: #1aa094!important;
+            width: auto;
+            color: #ffffff;
+        }
+        .grey{
+            color: #757575;
+        }
+        .layui-input-block{
+            margin-left: 140px;
+        }
+    </style>
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <div id="deleteBorder">
+            <!-- 客户基本信息 -->
+            <div id="customerInfoDiv">
+                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                    <legend>客户基本信息</legend>
+                </fieldset>
+                <!-- 隐藏栏位 -->
+                <input type="hidden" id="traceId" name="traceId"/>
+                <input type="hidden" id="boId" name="boId"/>
+                <!-- 控制是否有权限查看联系方式 -->
+                <input type="hidden" id="contactWayFlag" name="contactWayFlag" value="0"/>
+                <!-- 是否跟进预警跳转页面 1、是；2、否 -->
+                <!--<input type="hidden" id="followWarningFlag" name="followWarningFlag" value="0"/>-->
+                <form class="layui-form" action="" lay-filter="orgInfo" id="orgInfo">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">客户姓名</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="boCustomerName" name="boCustomerName" lay-verify="required" autocomplete="off" class="layui-input" disabled>
+                            </div>
+                        </div>
+                        <div class="layui-inline"style="line-height:37px">
+                            <label class="layui-form-label">客户编号</label>
+                            <div class="layui-input-inline">
+                                <!--<font id="boCustomerId" ></font>-->
+                                <input type="text" id="boCustomerId" name="boCustomerId" lay-verify="required" autocomplete="off" class="layui-input" disabled>
+                            </div>
+                        </div>
+                        <div class="layui-inline ">
+                            <label class="layui-form-label">手机号码</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="customerContactWay" name="customerContactWay" lay-verify="required" autocomplete="off" class="layui-input" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item isShowIdCard" style="display: none">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">户籍</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="census" name="census" lay-verify="required" autocomplete="off" class="layui-input" disabled>
+                            </div>
+                        </div>
+                        <div class="layui-inline"style="line-height:37px">
+                            <label class="layui-form-label">年龄</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="age" name="age" lay-verify="required" autocomplete="off" class="layui-input" disabled>
+                            </div>
+                        </div>
+                        <div class="layui-inline ">
+                            <label class="layui-form-label">性别</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="sex" name="sex" lay-verify="required" autocomplete="off" class="layui-input" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 隐藏栏位 -->
+                    <input type="hidden" id="phoneNum" name="phoneNum"/>
+                    <div class="layui-form-item">
+                        <div class="callTel">
+                            <button id="callPhone" type="button" class="layui-btn" lay-filter="callPhone">原号拨打</button>
+                            <button id="callPhone0" type="button" class="layui-btn" lay-filter="callPhone0">加拨0拨打</button>
+                            <button id="killPhone" type="button" class="layui-btn" lay-filter="killPhone">挂断电话</button>
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+            <!--线索信息-->
+            <!--layui-col-xs12 layui-col-sm6 layui-col-md6-->
+            <form class="layui-form" action=""  lay-filter="orgInfo" id="businessInfo">
+                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                    <legend>线索信息</legend>
+                </fieldset>
+                <div class="layui-form-item" id="businessInfoHideDiv">
+                    <div class="layui-inline" style="line-height:37px">
+                        <label class="layui-form-label">线索编号</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="businessNo" name="businessNo" lay-verify="required" autocomplete="off" class="layui-input" disabled>
+                            <!--<font id="businessNo" lay-filter="businessNo"></font>-->
+                        </div>
+                    </div>
+                    <div class="layui-inline" style="line-height:37px">
+                        <label class="layui-form-label">线索状态</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="businessStatus" name="businessStatus" lay-verify="required" autocomplete="off" class="layui-input" disabled>
+                            <!--<font id="businessStatus" lay-filter="businessStatus"></font>-->
+                        </div>
+                    </div>
+                    <div class="layui-inline" style="line-height:37px">
+                        <label class="layui-form-label">合作渠道</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="boChannelPartner" name="boChannelPartner" lay-verify="required" autocomplete="off" class="layui-input" disabled>
+                            <!--<font id="boChannelPartner" lay-filter="boChannelPartner"></font>-->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-inline ">
+                        <label class="layui-form-label">车牌所在地</label>
+                        <div class="layui-input-inline">
+                            <input type="text" lay-filter="boLicenseArea" name="boLicenseArea" autocomplete="off" class="layui-input" disabled>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">车辆品牌</label>
+                        <div class="layui-input-inline">
+                            <input type="text" lay-filter="boCarBrand" name="boCarBrand" autocomplete="off" class="layui-input" disabled>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">贷款金额(元)</label>
+                        <div class="layui-input-inline">
+                            <input type="text" lay-filter="boRegisterAmount" lay-verify="customMoney" name="boRegisterAmount" autocomplete="off" class="layui-input" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-inline" id="area-picker">
+                        <label class="layui-form-label">业务区域</label>
+                        <div class="layui-input-inline">
+                            <select name="boProvince" class="province-selector" lay-verify="required" disabled>
+                                <option value="">省</option>
+                            </select>
+                        </div>
+                        <div class="layui-input-inline">
+                            <select name="boCity" id="boCity" class="city-selector" lay-verify="required" disabled>
+                                <option value="">市</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">业务类型</label>
+                        <div class="layui-input-inline">
+                            <select name="boType" id="boType" lay-filter="boType" lay-verify="required" disabled>
+                                <option value="">请选择</option>
+                                <option value="2">新车</option>
+                                <option value="3">车抵贷</option>
+                                <option value="4">二手车</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">关键字</label>
+                        <div class="layui-input-inline" id="tags">
+                            <input type="text" name="boKeyword" id="inputTags"  autocomplete="off" disabled>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">线索来源</label>
+                        <div class="layui-input-inline">
+                            <input type="text" lay-filter="boCluesDescribe" lay-verify="boCluesDescribe" name="boCluesDescribe" autocomplete="off" class="layui-input" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">备注</label>
+                    <div class="layui-input-block">
+                        <textarea id="boDesc" lay-filter="boDesc" name="boDesc" class="layui-textarea" lay-verify="required" maxlength="300" disabled style="width:99.4%"></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <!--跟进记录-->
+        <div id="trace">
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                <legend>跟进记录</legend>
+            </fieldset>
+            <form class="layui-form" action="" lay-filter="orgInfo" id="traceConclusion">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        <span>上一次跟进记录</span>
+                        <div type="button" class="layui-btn" lay-filter="BusinessRecord" id="BusinessRecord" style="margin-top: 15px">更多跟进记录</div>
+                    </label>
+                    <div class="layui-input-block">
+
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableDiv" style="display: none">
+                            <tr class="tableDivFirst">
+                                <td>
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableItem first">
+                                        <thead>
+                                        <tr>
+                                            <td class="trTitle"  style="display: none">跟进Id</td>
+                                            <td class="trTitle">销售机构</td>
+                                            <td class="trTitle">电销外呼</td>
+                                            <td class="trTitle">跟进日期</td>
+                                            <td class="trTitle">跟进结论</td>
+                                            <td class="trTitle">下次跟进日期</td>
+                                            <td class="trTitle">操作</td>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <p class="noFollowData" style="display: none; padding: 9px 15px;">暂无跟进记录</p>
+
+                    </div>
+                </div>
+                <!--<div class="layui-form-item">-->
+                    <!--<label class="layui-form-label">跟进历史</label>-->
+                    <!--<div class="layui-input-block">-->
+                        <!--<button type="button" class="layui-btn" lay-filter="BusinessRecord" id="BusinessRecord">跟进历史</button>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <div class="layui-form-item">
+                    <div class="layui-inline layui-col-sm6 layui-col-md6">
+                        <label class="layui-form-label">跟进结论</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="traceConclusion" lay-filter="followConclusion" value="1" title="接受进件" checked>
+                            <input type="radio" name="traceConclusion" lay-filter="followConclusion" value="2" title="拒绝进件">
+                            <input type="radio" name="traceConclusion" lay-filter="followConclusion" value="3" title="下次跟进">
+                        </div>
+                    </div>
+                    <!--<div class="layui-inline">-->
+                        <!--<label class="layui-form-label">贷款意向</label>-->
+                        <!--<div class="layui-input-inline">-->
+                            <!--<select name="intention" lay-filter="intention" lay-verify="required">-->
+                                <!--<option value="">请选择</option>-->
+                                <!--<option value="1">高意向</option>-->
+                                <!--<option value="2">中意向</option>-->
+                                <!--<option value="3">低意向</option>-->
+                                <!--<option value="4">无意向</option>-->
+                                <!--<option value="5">未接通</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline layui-col-sm6 layui-col-md6">
+                        <label class="layui-form-label">贷款意向</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="intention" lay-filter="intention" value="1" title="高意向" checked>
+                            <input type="radio" name="intention" lay-filter="intention" value="2" title="中意向">
+                            <input type="radio" name="intention" lay-filter="intention" value="3" title="低意向">
+                            <input type="radio" name="intention" lay-filter="intention" value="4" title="无意向">
+                            <input type="radio" name="intention" lay-filter="intention" value="5" title="未接通">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item" id="reject">
+                    <div class="layui-inline accept">
+                        <label class="layui-form-label">经销商</label>
+                        <div class="layui-input-inline">
+                            <select id="dealer" name="dealerId" lay-filter="dealer" lay-verify="required">
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline accept">
+                        <label class="layui-form-label">客户经理</label>
+                        <div class="layui-input-inline">
+                            <select id="cityManager" name="cityManagerId" lay-filter="cityManager" lay-verify="required">
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline" id="nextTraceDateDiv">
+                        <label class="layui-form-label grey">下次跟进日期</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" id="nextTraceDate" name="nextTraceDate" lay-filter="nextTraceDate" autocomplete="off" disabled>
+                            <i class="layui-icon layui-icon-date d1" style="position: absolute;top:8px;right: 8px;font-size: 22px;display: none"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">描述</label>
+                    <div class="layui-input-block">
+                        <textarea id="traceDesc" name="traceDesc" placeholder="请输入内容..." class="layui-textarea" style="width:99.4%" lay-verify="required" lay-filter="traceDesc" autocomplete="off"></textarea>
+                    </div>
+                </div>
+
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">电话录音记录</label>
+                    <div class="layui-input-block">
+                        <table class="layui-hide" id="recordVoice" lay-filter="recordVoice"></table>
+                    </div>
+                </div>
+                <div class="layui-form-item" id="btnDiv">
+                    <div class="layui-input-block">
+                        <button type="button" class="layui-btn" lay-submit lay-filter="submitBusinessButton" id="submitBusinessButton">提交</button>
+                        <!--<button type="button" class="layui-btn" lay-filter="BusinessRecord" id="BusinessRecord">跟进记录</button>-->
+                        <button type="button" class="layui-btn" lay-filter="update" id="update">刷新</button>
+                        <!-- <button class="layui-btn" lay-submit="" lay-filter="submitBusinessBut1">保存1</button>
+                        <button id="reset" type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        <a class="layui-btn" href="javascript:;" data-title="222" data-iframe-tab="page/404.html">
+                            确认分配
+                        </a> -->
+                    </div>
+                </div>
+
+
+            </form>
+
+        </div>
+
+        <script type="text/html" id="recordVoiceBar">
+            <a class="layui-btn layui-btn-xs " lay-event="recordVoices">录音</a>
+        </script>
+        <!--<script type="text/html" id="indexTpl">-->
+            <!--{{d.LAY_TABLE_INDEX+1}}-->
+        <!--</script>-->
+        <!-- </div> -->
+    </div>
+</div>
+
+<script src="../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+<script src="../js/ajaxhook.min.js?v=1.0.4" charset="utf-8"></script>
+<script src="../js/httpIntercept.js?v=1.0.4" charset="utf-8"></script>
+<script src="js/common.js?v=1.0.4"></script>
+<script>
+    layui.use(['layuimini', 'form', 'layedit', 'laydate', 'table', 'layarea', 'inputTags', 'enhanceForm','laydate','zlhjConfig'], function () {
+        var form = layui.form
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , laydate = layui.laydate
+            , table = layui.table
+            , layuimini = layui.layuimini
+            , layarea = layui.layarea
+            , inputTags = layui.inputTags
+            , enhanceForm = layui.enhanceForm
+            , zlhjConfig = layui.zlhjConfig
+            , $ = layui.jquery;
+
+        let businessInfoForm = new enhanceForm({
+                elem: '#businessInfo'
+            });
+        let traceConclusionForm = new enhanceForm({
+                elem: '#traceConclusion'
+            });
+        //日期选择
+        if (parseInt($('#followWarningFlag').val())!==1){
+            laydate.render({
+                elem: '#nextTraceDate' //指定元素
+                ,trigger: 'click'
+                ,eventElem: '.d1'
+                ,min: getNowDate()
+            });
+
+        }
+
+
+        // add by lqy 20200721
+        //表单初始赋值
+        var keyWordInfo;
+        var boIdVal = $('#boId').val();
+        $('#businessNo').val(boIdVal);
+
+        window.init = () => {
+            //获取待跟进详情
+            $.ajax({
+                type: "post",
+                url: `${zlhjConfig.baseUrl}/particulars/getDGJParticularsMsg`,
+                data: `{"boId":"${boIdVal}"}`,
+                dataType: "json",
+                contentType :'application/json',
+                success:function (data) {
+                    console.log(data);
+                    let boData = data.data.businessOpportunities;
+                    let coData = data.data.customerInfo;
+                    let boId = boData.boId;
+                    let cityCode = boData.boCityCode;
+                    let channelId = boData.channelName;
+
+                    $('#boChannelPartner').val(getCoChannel(boData.channelName));
+                    $('#businessStatus').val(getBoStateName(boData.boState));
+
+                    $('#boCustomerId').val(coData.customerId);
+                    $('#boCity').empty().append(new Option(boData.boCity));
+
+                    // let phoneNum
+                    // if(channelId === 99){
+                    //     phoneNum = coData.customerContactWay
+                    // }else {
+                    //     phoneNum = coData.customerContactWay.substr(0,3)+"****"+ coData.customerContactWay.substr(coData.customerContactWay.length - 4)
+                    // }
+
+                    form.val('orgInfo', {
+                        "boCustomerName": coData.customerName
+                        , "boCustomerId":  coData.customerId
+                        , "customerContactWay": coData.customerContactWay
+                        ,"phoneNum":coData.customerContactWay
+                        , "boState":  boData.boState
+                        , "boType":  boData.boType
+                        , "boProvince":  boData.boProvince
+                        , "boCity":  boData.boCity
+                        , "boLicenseArea":  boData.boLicenseArea
+                        , "boCarBrand":  boData.boCarBrand
+                        , "boRegisterAmount":  boData.boRegisterAmount
+                        // , "boKeyword":  boData.boKeyword
+                        , "boCluesDescribe": boData.boCluesDescribe
+                        , "boDesc":  boData.boDesc
+
+                    });
+
+                    //身份证
+                    let IdCard = boData.boCustomerIdno
+                    console.log("IdCard",IdCard)
+                    if(IdCard != null && IdCard != ""){
+                        //户籍
+                        $("#census").val(IdCard.substr(0,6));
+                        //年龄
+                        let date = new Date();
+                        let year = date.getFullYear();
+                        let age = year - IdCard.substr(6,4);
+                        $("#age").val(age);
+                        //性别
+                        let s = IdCard.substr(IdCard.length-2,1)
+                        if(s % 2 == 0){
+                            $("#sex").val("女");
+                        }else{
+                            $("#sex").val("男");
+                        }
+
+                        $(".isShowIdCard").show();
+                    }
+
+                    let managerData = Object.assign(
+                        {"cityCode":cityCode},
+                        {"boId":boId},
+                    )
+                    //获取城市客户经理
+                    $.ajax({
+                        type: "post",
+                        url: `${zlhjConfig.baseUrl}/managerAllot/getMangerName`,
+                        data: JSON.stringify(managerData),
+                        dataType: "json",
+                        contentType :'application/json',
+                        success:function (res) {
+                            if(res.flag === true){
+                                let manager = res.data
+                                manager.map(cur => {
+                                    $('#cityManager').append(new Option(cur.managerName, cur.managerId))
+                                })
+                                form.render("select");
+
+                            }else{
+                                layer.msg(res.message, {icon: 5},{time:1000});
+                            }
+
+                        },
+                        error:function (e) {
+                            console.log("error")
+                        }
+                    });
+
+                    // let closeBtn = parseInt($('#followWarningFlag').val())===1 ? false : true;
+                    if (boData.boKeyword != null){
+                        let defaultContent = boData.boKeyword.split("|");
+                        inputTags.render({
+                            elem:'#inputTags',//定义输入框input对象
+                            close: false,
+                            content: defaultContent,//默认标签
+                            // aldaBtn: true,//是否开启获取所有数据的按钮
+                            done: function(value){ //回车后的回调
+                                console.log(value)
+                            }
+                        });
+                    }
+
+                    // if (parseInt($('#followWarningFlag').val())===1){
+                    //     form.val('orgInfo', {
+                    //         "traceConclusion": boData.boState
+                    //         , "nextTraceDate":  boData.boStartDate
+                    //         , "boSuccessAmount":  boData.boSuccessAmount
+                    //         , "boSuccessDate":  boData.boSuccessDate
+                    //         , "traceDesc":  boData.traceInfoDesc
+                    //
+                    //     });
+                    //     businessInfoForm.disableAll();
+                    //     traceConclusionForm.disableAll();
+                    //     $('.d1').unbind("click");
+                    //     $('.d2').unbind("click");
+                    // }
+
+
+
+
+                },
+                error:function (e) {
+                    console.log("sorry，error");
+
+                }
+            });
+
+
+
+        };
+
+        //获取 经销商
+        $.ajax({
+            type: "post",
+            url: `${zlhjConfig.baseUrl}/businessOpportunity/getCoreDealerMsg`,
+            data: `{"boId":"${boIdVal}"}`,
+            dataType: "json",
+            contentType :'application/json',
+            success:function (res) {
+                if(res.flag === true){
+                    let dealer = res.data.dealerInfo
+                    dealer.map(cur => {
+                        $('#dealer').append(new Option(cur.dealerName, cur.dealerId))
+                    })
+                    form.render("select");
+
+                }else{
+                    layer.msg(res.message, {icon: 5});
+                }
+
+            },
+            error:function (e) {
+                console.log("error")
+            }
+        });
+
+        //初始化数据完成后再处理表单赋值
+        // Promise.all([cusServiceList]).then((result) => {
+            init();
+        // }).catch((error) => {
+        //     console.log(error)
+        // });
+
+
+         //选择 跟进结论 显示控制 1、接受进件；2、拒绝进件；3、下次跟进；
+        window.followRadio = (v) => {
+            $("#dealer").val('');
+            $("#cityManager").val('');
+            $("#nextTraceDate").val('');
+            if(v === "1"){
+                $('#nextTraceDate').attr("disabled",true);
+                $('#nextTraceDate').removeAttr("lay-verify");
+                $("#nextTraceDateDiv .layui-icon").hide();
+
+                $('#reject select').attr("lay-verify","required");
+                $("#reject select").attr("disabled",false);
+                form.render('select');
+
+                $("#nextTraceDateDiv").find("label").addClass("grey");
+                $(".accept").find("label").removeClass("grey");
+
+            }else if(v === "3"){
+                $('#nextTraceDate').attr("disabled",false);
+                $('#nextTraceDate').attr("lay-verify","required");
+                $("#nextTraceDateDiv .layui-icon").show();
+
+                $("#reject select").attr("disabled",true);
+                $('#reject select').removeAttr("lay-verify");
+                form.render('select');
+
+                $("#nextTraceDateDiv").find("label").removeClass("grey");
+                $(".accept").find("label").addClass("grey");
+            }
+            else {
+                $("#reject select").attr("disabled","disabled");
+                $("#reject select").removeAttr("lay-verify");
+                $("#reject").find("input").attr("disabled",true);
+                $("#reject").find("input").removeAttr("lay-verify");
+                $("#nextTraceDateDiv .layui-icon").hide();
+                form.render('select');
+
+                $("#reject").find("label").addClass("grey");
+
+            }
+        };
+
+        form.on('radio(followConclusion)', function (data) {
+            followRadio(data.value);
+        })
+
+        //获取电话录音记录
+        var RecordVoice = table.render({
+            elem: '#recordVoice',
+            defaultToolbar: ['filter'],
+            request: {
+                pageName: 'currentPage' //页码的参数名称，默认：page
+                ,limitName: 'pageSize' //每页数据量的参数名，默认：limit
+            },
+            response: {
+                // statusName: 'state' //规定数据状态的字段名称，默认：code
+                statusCode: 'Y' //规定成功的状态码，默认：0
+                // ,dataName: 'userList' //规定数据列表的字段名称，默认：data
+            },
+            method:'post',
+            contentType: 'application/json',
+            where:{boId:boIdVal},
+            url: `${zlhjConfig.baseUrl}/traceInfo/getCallList`,
+            //toolbar: '<h5>电话录音记录</h5>',
+            parseData: function(res) {
+                return {
+                    "code": res.state,
+                    "msg": res.msg,
+                    "data": res.callList
+                };
+            },
+            cols: [[
+                {field: 'userName', minWidth:100,title: '电销外呼', align: "center"},
+                {field: 'callId', minWidth:250,title: '录音序号', align: "center"},
+                {field: 'path', minWidth:100,title: '录音路径', align: "center",hide:"true",},
+                {field: 'platformPath', minWidth:100,title: '录音路径', align: "center",hide:"true",},
+                {title: '录音', minWidth: 100, fixed: "right", align: "center",
+                    // templet: '#recordVoiceBar',
+                    templet: (res) => {
+                        var isFileValid = res.isFileValid;
+                        if(isFileValid == 1){
+                            return "<a class=\"layui-btn layui-btn-xs \" lay-event=\"recordVoices\">录音</a>"
+                        }else{
+                            return "文件失效"
+                        }
+
+                    }
+                }
+            ]],
+
+        });
+
+        //客户经理姓名
+        let cityManagerName
+        form.on('select(cityManager)',(res) => {
+            console.log('客户经理 :', res);
+            cityManagerName  = res.elem[res.elem.selectedIndex].text
+        })
+
+        $("#submitBusinessButton").attr("disabled",false);
+        function submitInfo(data) {
+            console.log(`入参${JSON.stringify(data.field)}`);
+            $("#submitBusinessButton").attr("disabled",true);
+
+            let traceInfo = $.extend(businessInfoForm.serializeJson(),data.field,{"boId":boIdVal,"cityManagerName":cityManagerName});
+            console.log('提交的数据',traceInfo)
+            $.ajax({
+                type: "post",
+                url: `${zlhjConfig.baseUrl}/particulars/submitDGJParticulars`,
+                data: JSON.stringify(traceInfo),
+                dataType: "json",
+                contentType :'application/json',
+                async:false,
+                success:function (res){
+                    if(res.flag === true){
+                        layer.msg('提交成功',{
+                            icon: 1,
+                            time: 1000 //1秒关闭
+                        }, () => {
+                            window.parent.location.reload(); //刷新父页面
+                            let index = parent.layer.getFrameIndex(window.name); //得到当前iframe层的索引
+                            parent.layer.close(index); //执行关闭当前iframe层
+
+                        });
+
+                    }else{
+                        layer.msg(res.message, {icon: 5},function () {
+                            $("#submitBusinessButton").attr("disabled",false);
+                        });
+                    }
+
+                },
+                error(e){
+                    console.log("error");
+                }
+            })
+        }
+        // 跟进 提交
+
+        form.on('submit(submitBusinessButton)', debounce(submitInfo,1000));
+
+        //跟进记录跳转
+        $("#BusinessRecord").on("click", () => {
+            layer.open({
+                type: 2,
+                title: '跟进记录',
+                shadeClose: true,
+                shade: 0.3,
+                maxmin: true, //开启最大化最小化按钮
+                area: ['80%', '60%'],
+                content: './follow-records.html',
+                success:(layero, index) => {
+                    let body = layer.getChildFrame('body', index);//建立父子联系
+                    let iframeWin = window[layero.find('iframe')[0]['name']];
+                    body.find('#boId').val(boIdVal);
+                    body.find('#traceId').val(traceId);
+                    body.find('#reset').hide();
+                    // $('.layui-layer-setwin').hide();
+                },
+                end: () => {
+                    $("#update").click();
+                    // table.reload('currentTableId', {
+                    //     url: `${zlhjConfig.baseUrl}/user/list`
+                    //     ,where: {} //设定异步数据接口的额外参数
+                    // });
+                }
+            });
+        });
+
+        // 刷新电话录音记录
+        $("#update").on("click", () => {
+            table.render({
+                elem: '#recordVoice',
+                defaultToolbar: ['filter'],
+                request: {
+                    pageName: 'currentPage' //页码的参数名称，默认：page
+                    ,limitName: 'pageSize' //每页数据量的参数名，默认：limit
+                },
+                response: {
+                    // statusName: 'state' //规定数据状态的字段名称，默认：code
+                    statusCode: 'Y' //规定成功的状态码，默认：0
+                    // ,dataName: 'userList' //规定数据列表的字段名称，默认：data
+                },
+                method:'post',
+                contentType: 'application/json',
+                where:{boId:boIdVal},
+                url: `${zlhjConfig.baseUrl}/traceInfo/refresh`,
+                //toolbar: '<h5>刷新电话录音记录</h5>',
+                parseData: function(res) {
+                    return {
+                        "code": res.state,
+                        "msg": res.msg,
+                        "data": res.callList
+                    };
+                },
+                cols: [[
+                    {field: 'userName', minWidth:100,title: '电销外呼', align: "center"},
+                    {field: 'callId', minWidth:100,title: '录音序号', align: "center"},
+                    {field: 'path', minWidth:100,title: '录音路径', align: "center",hide:"true"},
+                    {field: 'platformPath', minWidth:100,title: '录音路径', align: "center",hide:"true",},
+                    {title: '录音', minWidth: 100, fixed: "right", align: "center",
+                        // templet: '#recordVoiceBar',
+                        templet: (res) => {
+                            var isFileValid = res.isFileValid;
+                            if(isFileValid == 1){
+                                return "<a class=\"layui-btn layui-btn-xs \" lay-event=\"recordVoices\">录音</a>"
+                            }else{
+                                return "文件失效"
+                            }
+
+                        }
+                    }
+                ]],
+                done:function (res,curr,count) {
+                    console.log(res)
+                    // layer.msg(res.msg, {icon: 1});
+                }
+
+            });
+
+
+        });
+
+        // 监听录音表格
+        table.on('tool(recordVoice)',(obj) => {
+            let data = obj.data;//获得当前行数据
+            let layEvent = obj.event;
+            let downloadPath
+            if(obj.event = 'recordVoices'){
+                if(data.platformPath ==='' || data.platformPath === null ){
+                    downloadPath = data.path
+                }else {
+                    downloadPath = data.platformPath
+                }
+                window.location.href = downloadPath;
+                console.log(data)
+                console.log('下载成功！')
+            }
+        })
+
+        let callType
+        function clickCall(){
+            //判断当前账号是否可以外呼
+            $.ajax({
+                type: "get",
+                url: `${zlhjConfig.baseUrl}/traceInfo/checkEffectiveCallAccount`,
+                dataType: "json",
+                contentType :'application/json',
+                success:function (res) {
+                    if(res.flag === true){
+                        let jobNum = res.data.callAccount
+
+                        layer.alert('请确认当前正在使用'+ jobNum +'工号进行外呼！', {
+                            skin: 'layui-layer-molv' //样式类名
+                            ,closeBtn: 0,
+                            btn: ['确认','取消']
+                        }, function(){
+                            //拨打电话
+                            $.ajax({
+                                type: "post",
+                                url: `${zlhjConfig.baseUrl}/traceInfo/callTelePhone`,
+                                data: `{"boId":'${boIdVal}',"callType":${callType}}`,
+                                dataType: "json",
+                                contentType :'application/json',
+                                success:function (res) {
+                                    if(res.flag === true){
+                                        layer.msg(res.message, {icon: 1},{time:1000});
+
+                                    }else {
+                                        layer.msg(res.message, {icon: 5},{time:1000});
+                                    }
+                                },
+                                error:function (e) {
+                                    layer.msg('拨打失败', {icon: 5},{time:1000});
+                                    console.log("error")
+                                }
+                            })
+                        });
+
+                    }else {
+                        layer.msg('当前账号不可外呼，请联系科技运维！', {icon: 5},{time:1000});
+                    }
+                },
+                error:function (e) {
+                    layer.msg('拨打失败', {icon: 5},{time:1000});
+                    console.log("error")
+                }
+            })
+        }
+
+        //判断是否登录外呼系统 会否放开电话功能
+        let isCall = layui.sessionData('sessionData').flag
+
+        if(isCall == 1){
+            $('.callTel button').css('background-color','#009688')
+            //原号 拨打电话
+            $('#callPhone').click(function () {
+                callType = 1;
+                clickCall();
+            })
+            //加拨0 拨打电话
+            $('#callPhone0').click(function () {
+                callType = 2;
+                clickCall();
+
+            })
+            //挂断电话
+            $('#killPhone').click(function () {
+                // 检测外呼平台通话状态
+                $.ajax({
+                    type: "get",
+                    url: `${zlhjConfig.baseUrl}/traceInfo/checkCallSystemState`,
+                    dataType: "json",
+                    contentType :'application/json',
+                    success:function (res) {
+                        if(res.flag === true){
+                            layer.msg('请拨打电话后再尝试该操作！', {icon: 5},{time:1000});
+                        }else {
+                            //挂断电话
+                            $.ajax({
+                                type: "post",
+                                url: `${zlhjConfig.baseUrl}/traceInfo/hangUp`,
+                                data: `{"boId":'${boIdVal}'}`,
+                                dataType: "json",
+                                contentType :'application/json',
+                                success:function (res) {
+                                    if(res.flag === true){
+                                        layer.msg(res.message, {icon: 1},{time:1000});
+                                    }else {
+                                        layer.msg(res.message, {icon: 5},{time:1000});
+                                    }
+                                },
+                                error:function (e) {
+                                    layer.msg('挂断失败', {icon: 5});
+                                    console.log("error")
+                                }
+                            })
+                        }
+                    },
+                    error:function (e) {
+                        layer.msg('挂断失败', {icon: 5});
+                        console.log("error")
+                    }
+                })
+            })
+        }else if(isCall == 0){
+            $('.callTel button').css('background-color','#c1c1c1')
+        }
+
+
+        //自定义验证规则
+        form.verify({
+            title: function (value) {
+                if (value.length < 5) {
+                    return '标题至少得5个字符啊';
+                }
+            }
+            , pass: [
+                /^[\S]{6,12}$/
+                , '密码必须6到12位，且不能出现空格'
+            ]
+            , content: function (value) {
+                layedit.sync(editIndex);
+            },
+            customPhone: [/(^$)|^1\d{10}$/, '请输入正确的手机号'],
+            customEmail: [/(^$)|^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/, '邮箱格式不正确'],
+            customUrl: [/(^$)|(^#)|(^http(s*):\/\/[^\s]+\.[^\s]+)/, '链接格式不正确'],
+            customNumber: [/(^$)|^\d+$/, '只能填写数字'],
+            customMoney: [/(^$)|^(([1-9][0-9]*)|(([0]\.\d{1,2}|[1-9][0-9]*\.\d{1,2})))$/, '请填写正确的金额,最多两位小数'],
+            customDate: [/(^$)|^(\d{4})[-\/](\d{1}|0\d{1}|1[0-2])([-\/](\d{1}|0\d{1}|[1-2][0-9]|3[0-1]))*$/, '日期格式不正确'],
+            customIdentity: [/(^$)|(^\d{15}$)|(^\d{17}(x|X|\d)$)/, '请输入正确的身份证号']
+        });
+
+        $("#divCloseBut").on("click", () => {
+            layer.close(layer.index);
+        });
+
+        // 接收联系方式的数据
+        window.otherContactsInfoData;
+        let orgInfoForm = new enhanceForm({
+            elem: '#orgInfo'
+        });
+        // let supInfoForm = new enhanceForm({
+        //         elem: '#supInfo'
+        //     });
+        // 初始加载
+        layarea.render({
+            elem: '#area-picker',
+            change: function (res) {
+                //选择结果
+                //console.log(res);
+            }
+        });
+        // let keyWordInfo = inputTags.render({
+        //     elem:'#inputTags',//定义输入框input对象
+        //     close: true,
+        //     // content: ['标题一','标题二'],//默认标签
+        //     // aldaBtn: true,//是否开启获取所有数据的按钮
+        //     done: function(value){ //回车后的回调
+        //         //console.log(value)
+        //     }
+        // });
+        $('#boCustomerName').focus();
+        /**
+         * 加载今天日期
+         * @returns {string}
+         */
+        function getNowDate(){
+            var mydate = new Date();
+            var str = "" + mydate.getFullYear() + "-";
+            str += (mydate.getMonth()+1) + "-";
+            str += mydate.getDate();
+            return str;
+        }
+
+
+        //上一次跟进记录列表
+        $.ajax({
+            type:"post",
+            url:`${zlhjConfig.baseUrl}/traceInfo/getLastOneTrace`,
+            data: JSON.stringify({boId:boIdVal}),
+            dataType: 'JSON',
+            contentType :'application/json',
+            success: function (res) {
+                let data = res.data.traceList;
+                console.log('traceList',data)
+
+                if(data.length == 0){
+                    $(".noFollowData ").show();
+                    $("#BusinessRecord").hide();
+                }else{
+                    $(".tableDiv ").show();
+                    $("#BusinessRecord").show();
+
+                    data.map(cur => {
+                        if(cur.traceConclusion === 1){  cur.traceConclusion = "接受进件"}
+                        else if(cur.traceConclusion === 2){ cur.traceConclusion = "拒绝进件"}
+                        else if(cur.traceConclusion === 3){ cur.traceConclusion = "下次跟进"}
+                        else if(cur.traceConclusion === 4){ cur.traceConclusion = "重新分配销售"}
+                        else if(cur.traceConclusion === 5){ cur.traceConclusion = "跟进中"}
+                        else if(cur.traceConclusion === 6){ cur.traceConclusion = "取消"}
+                        else if(cur.traceConclusion === 7){ cur.traceConclusion = "结束"}
+                        else{
+                            cur.traceConclusion = "未知"
+                        }
+
+                        if(cur.traceNextDate === null || cur.traceNextDate === ""){
+                            cur.traceNextDate = "-"
+                        }
+                        if(cur.traceDesc === null || cur.traceDesc === ""){
+                            cur.traceDesc = "-"
+                        }
+
+                        let word = '<tr>\n' +
+                            '                <td>\n' +
+                            '                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableItem">\n' +
+                            '                        <tr>\n' +
+                            '                            <td class="trItem traceIdDiv" style="display: none">' + cur.traceId + '</td>\n' +
+                            '                            <td class="trItem">'+ cur.traceSaleOrgName +'</td>\n' +
+                            '                            <td class="trItem">'+ cur.traceSaleUserName +'</td>\n' +
+                            '                            <td class="trItem">'+ cur.traceDate +'</td>\n' +
+                            '                            <td class="trItem">'+ cur.traceConclusion +'</td>\n' +
+                            '                            <td class="trItem">'+ cur.traceNextDate +'</td>\n' +
+                            '                            <td class="trItem" rowspan="2"> <div class="buttonDetail">下载语音</div> </td>\n' +
+                            '                        </tr>\n' +
+                            '                        <tr>\n' +
+                            '                            <td class="trItem">描述</td>\n' +
+                            '                            <td class="trItem" colspan="4">'+ cur.traceDesc +'</td>\n' +
+                            '                        </tr>\n' +
+                            '                    </table>\n' +
+                            '                </td>\n' +
+                            '            </tr>'
+
+                        $(".tableDiv").append(word);
+                    })
+
+                    $(".tableItem:even").css('background','#f2f2f2');
+
+                    $(".buttonDetail").each(function () {
+                        $(this).click(function () {
+                            let traceId = $(this).parents(".tableItem").find(".traceIdDiv").text();
+                            console.log(1111111111111,traceId)
+                            // 弹出框框
+                            layer.open({
+                                type: 1,
+                                title: '语音记录',
+                                shadeClose: true,
+                                shade: 0.3,
+                                maxmin: true, //开启最大化最小化按钮
+                                area: ['50%', '70%'],
+                                content: `<table class="layui-hide" id="recordVoice2" lay-filter="recordVoice2"></table>`,
+                                //data: {id: `${data.boId}`},
+                                btn: ['关闭'],
+                                success: (layero, index) => {
+                                    //成功之后加载列表
+                                    table.render({
+                                        elem: '#recordVoice2',
+                                        defaultToolbar: ['filter'],
+                                        request: {
+                                            pageName: 'currentPage' //页码的参数名称，默认：page
+                                            ,limitName: 'pageSize' //每页数据量的参数名，默认：limit
+                                        },
+                                        response: {
+                                            // statusName: 'state' //规定数据状态的字段名称，默认：code
+                                            statusCode: true //规定成功的状态码，默认：0
+                                            // ,dataName: 'userList' //规定数据列表的字段名称，默认：data
+                                        },
+                                        method:'post',
+                                        contentType: 'application/json',
+                                        where:{traceId:traceId},
+                                        url: `${zlhjConfig.baseUrl}/traceInfo/getTraceCallList`,
+                                        // where:{boId:boIdVal},
+                                        // url: `${zlhjConfig.baseUrl}/traceInfo/getCallList`,
+                                        //toolbar: '<h5>电话录音记录</h5>',
+                                        parseData: function(res) {
+                                            return {
+                                                "code": res.flag,
+                                                "msg": res.message,
+                                                "data": res.data.callList
+                                            };
+                                        },
+                                        cols: [[
+                                            {field: 'userName', minWidth:100,title: '电销外呼', align: "center"},
+                                            {field: 'path', minWidth:100,title: '录音路径', align: "center",hide:"true"},
+                                            {field: 'callId', minWidth:100,title: '呼叫编号', align: "center"},
+                                            {field: 'platformPath', minWidth:100,title: '录音路径', align: "center",hide:"true",},
+                                            {title: '录音', minWidth: 88,  fixed: "right", align: "center",
+                                                // templet: '#recordVoiceBar',
+                                                templet: (res) => {
+                                                    var isFileValid = res.isFileValid;
+                                                    if(isFileValid == 1){
+                                                        return "<a class=\"layui-btn layui-btn-xs \" lay-event=\"recordVoices\">录音</a>"
+                                                    }else{
+                                                        return "文件失效"
+                                                    }
+
+                                                }
+
+                                            }
+                                        ]],
+
+                                    });
+
+                                },
+                                end: () => {
+
+                                }
+                            });
+
+                        })
+                    })
+
+                }
+
+            }
+        });
+
+
+        // 监听弹出框的录音表格
+        table.on('tool(recordVoice2)',(obj) => {
+            let data = obj.data;//获得当前行数据
+            let layEvent = obj.event;
+            let downloadPath
+            if(obj.event = 'recordVoices'){
+                if(data.platformPath ==='' || data.platformPath === null ){
+                    downloadPath = data.path
+                }else {
+                    downloadPath = data.platformPath
+                }
+                window.location.href = downloadPath;
+                console.log(data)
+                console.log('下载成功！')
+            }
+        })
+
+
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>客户经理设置</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="../css/public.css" media="all">
+</head>
+<style>
+    .layui-layer-setwin{display: none;}
+    .tableItem{
+        border: 1px solid #333333;
+    }
+    .tableItem tr td{
+        border: 1px solid #e6e6e6;
+        color: #666666;
+        height: 28px;
+        line-height: 28px;
+        padding: 5px 15px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    .tableDiv thead{
+        background: #f2f2f2;
+    }
+    .buttonDetail{
+        background: #009688;
+        padding: 4px 10px;
+        color: #ffffff;
+        border-radius: 2px;
+        border: none;
+    }
+    .trItem{
+        width: 17%;
+    }
+    .trTitle{
+        font-weight: bold;
+        width: 17%;
+    }
+
+</style>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <fieldset class="layui-elem-field layuimini-search">
+            <legend>查询条件</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" lay-filter="condition">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">合作渠道</label>
+                            <div class="layui-input-inline">
+                                <select name="coChannel" class="coChannel">
+                                    <option value="0">全部</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">业务区域</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="city" name="city" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">客户经理</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="managerName" name="managerName" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <a class="layui-btn" lay-submit="" lay-filter="search">查询</a>
+                            <a class="layui-btn" lay-submit="" lay-filter="add">新增</a>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+        </fieldset>
+
+        <div id="tipDiv" style="display: none;">
+            <form class="layui-form" action="" lay-filter="addSaler" style="margin: 3% auto;text-align: center">
+                <div class="layui-form-item">
+                    <div class="layui-inline ">
+                        <label class="layui-form-label">合作渠道</label>
+                        <div class="layui-input-inline">
+                            <select name="coChannel" class="coChannel" lay-verify="required">
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                        <div class="layui-input-inline" style="opacity: 0">
+                            <input type="text" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">业务区域</label>
+                        <div class="layui-input-inline">
+                            <select name="provinceCode" id="boProvince" class="province-selector" lay-filter="boProvince" lay-verify="required">
+                                <option value="">省</option>
+                            </select>
+                        </div>
+                        <div class="layui-input-inline">
+                            <select name="cityCode" id="boCity" class="city-selector" lay-filter="boCity" lay-verify="required">
+                                <option value="">市</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">客户经理</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="manager" name="manager" autocomplete="off" class="layui-input" lay-verify="required">
+                        </div>
+                        <div class="layui-input-inline" style="opacity: 0">
+                            <input type="text" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;margin-bottom: 20px;">
+                    <button id='cancle' class="layui-btn" lay-filter="cancle">取消</button>
+                    <button id='submitBut' lay-submit class="layui-btn" lay-filter="submitBut">确定</button>
+                </div>
+            </form>
+        </div>
+
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" id="tableDiv" style="display: none">
+            <tr class="tableDivFirst">
+                <td>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableItem first">
+                        <thead>
+                        <tr>
+                            <td class="trTitle"  style="display: none">客户经理Id</td>
+                            <td class="trTitle">客户经理姓名</td>
+                            <td class="trTitle">团队</td>
+                            <td class="trTitle">操作</td>
+                        </tr>
+                        </thead>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+        <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit">禁用</a>
+            <!-- <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a> -->
+        </script>
+        <script type="text/html" id="managerBar">
+            <a class="layui-btn layui-btn-xs " lay-event="managerSure">确定</a>
+        </script>
+    </div>
+</div>
+<script src="../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+<script src="js/common.js?v=1.0.4"></script>
+<script src="../js/ajaxhook.min.js?v=1.0.4" charset="utf-8"></script>
+<script src="../js/httpIntercept.js?v=1.0.4" charset="utf-8"></script>
+<script>
+    layui.use(['form', 'table', 'laydate','zlhjConfig'], function () {
+        let $ = layui.jquery,
+            form = layui.form,
+            laydate = layui.laydate,
+            zlhjConfig = layui.zlhjConfig,
+            table = layui.table;
+
+        form.render("select");
+
+        //初始化列表
+        function init() {
+            //合作渠道
+            $.ajax({
+                url: `${zlhjConfig.baseUrl}/beCodeAsso/getHZQDList`,
+                contentType: 'application/json',
+                dataType: 'json',
+                type: 'get',
+                success: function (res) {
+                    console.log(res.HZQDList);
+                    for (let channel of res.HZQDList) {
+                        $('.coChannel').append(new Option(channel.beCodeName, channel.beCode));
+                    }
+                    form.render("select");
+                }
+            });
+
+            //获取省列表
+            $.ajax({
+                type: "get",
+                url: `${zlhjConfig.baseUrl}/province/getAllProvince`,
+                dataType: "json",
+                contentType :'application/json',
+                success:function (data) {
+                    console.log(data)
+                    let provinceArr = data.province
+                    provinceArr.map(cur => {
+                        $("#boProvince").append(new Option(cur.name,cur.id))
+                    })
+                    form.render('select');
+
+                },
+                error:function (e) {
+                    console.log("error")
+                }
+            })
+
+        }
+        init();
+
+        let boProvince,boCity;
+        //根据省查询市
+        form.on('select(boProvince)',(res) => {
+            console.log('省 :', res);
+            let superiorId = res.value
+            boProvince  = res.elem[res.elem.selectedIndex].text
+            //获取市列表
+            $.ajax({
+                type: "get",
+                url: `${zlhjConfig.baseUrl}/city/getCity`,
+                data:{"superiorId":superiorId} ,
+                dataType: "json",
+                contentType :'application/json',
+                success:function (data) {
+                    $('#boCity').empty();
+                    $('#boCity').append(new Option('市',""))
+                    console.log(data)
+                    let cityArr = data.city
+                    cityArr.map(cur => {
+                        $("#boCity").append(new Option(cur.name,cur.id))
+                    })
+                    form.render('select');
+
+                },
+                error:function (e) {
+                    console.log("error")
+                }
+            })
+
+        })
+        //选择的市码值
+        form.on('select(boCity)',(res) => {
+            console.log('市 :', res);
+            boCity  = res.elem[res.elem.selectedIndex].text
+        })
+
+
+        let business_list_table = table.render({
+            elem: '#currentTableId',
+            toolbar: '<h5>查询结果</h5>',
+            defaultToolbar: ['filter'],
+            url: `${zlhjConfig.baseUrl}/managerAllot/getEffectiveCityManagerConfig`,
+            method: 'POST',
+            contentType: 'application/json',
+            request: {
+                pageName: 'currentPage', //页码的参数名称，默认：page
+                limitName: 'pageSize' //每页数据量的参数名，默认：limit
+            },
+            response: {
+                statusCode: 'Y'
+            },
+            where: {
+                "coChannel": "",
+                "city": "",
+                "managerName": "",
+            },
+            parseData: function (res) {
+                return {
+                    code: res.state, //解析接口状态
+                    msg: res.msg, //解析提示文本
+                    count: res.total, //解析数据长度
+                    data: res.cityManagerConfigList//解析数据列表
+                };
+            },
+            cols: [[
+                {field: 'beCodeName', minWidth: 230, title: '合作渠道', align: "center"},
+                {field: 'cityName', minWidth: 150, title: '业务区域', align: "center"},
+                {field: 'managerName', minWidth: 200, title: '客户经理', align: "center"},
+                {title: '操作', minWidth: 88, templet: '#currentTableBar', fixed: "right", align: "center"}
+            ]],
+            limits: [1,10, 20, 50, 100],
+            limit: 20,
+            page: true
+        });
+
+        /**
+         * 根据条件查询符合的线索列表
+         */
+        form.on('submit(search)', function (res) {
+            console.log(res.field)
+            business_list_table.reload({
+                where: {
+                    "coChannel": res.field.coChannel,
+                    "city": res.field.city,
+                    "managerName": res.field.managerName,
+                },
+                page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+            });
+        });
+
+       // 禁用
+        table.on('tool(currentTableFilter)', (obj) => {
+            let data = obj.data;
+            console.log(data)
+            let configId = data.configId
+            if (obj.event === 'edit') {
+                layer.alert(data.beCodeName+'业务'+data.cityName+'地区去除客户经理'+data.managerName+'！<br>禁用后无法恢复，确认禁用？', {
+                    skin: 'layui-layer-molv' //样式类名
+                    ,closeBtn: 0,
+                    btn: ['确认','取消']
+                }, function(){
+                    $.ajax({
+                        type: "post",
+                        url: `${zlhjConfig.baseUrl}/managerAllot/forbiddenManagerConfig`,
+                        data: `{"configId":"${configId}"}`,
+                        dataType: "json",
+                        contentType :'application/json',
+                        success:function (res) {
+                            if(res.state == "Y"){
+                                layer.msg(res.msg, {icon:1, time: 1000 },function () {
+                                    window.location.reload();
+                                });
+                            }else {
+                                layer.msg(res.msg, {icon:5, time: 2000 },function () {
+                                    window.location.reload();
+                                });
+                            }
+                        },
+                        error:function (e) {
+                            console.log("error")
+                        }
+                    })
+                });
+
+            }
+        });
+
+        //新增按钮弹框
+        form.on('submit(add)',function (res) {
+           layer.open({
+                type: 1,
+                title: '新增客户经理配置',
+                // maxmin: true, //开启最大化最小化按钮
+                scrollbar: false,
+                closeBtn: 0,
+                // skin: 'layui-bg-gray',
+                area: ['50%', '55%'],
+                content: $('#tipDiv'),
+                success: (layero, index) => {
+                    business_list_table.reload()
+                },
+            });
+        })
+
+        //确认新增
+        let managerInfo
+        form.on('submit(submitBut)', function (data) {
+            var orgData = data.field;
+            console.log(orgData);
+
+            $.ajax({
+                type: "post",
+                url: `${zlhjConfig.baseUrl}/managerAllot/addCityManagerConfig`,
+                data: JSON.stringify(orgData),
+                dataType: "json",
+                contentType :'application/json',
+                success:function (data) {
+                    managerInfo = data.activatedUserList
+                    console.log(data.msg);
+                    if(data.state == "Y"){
+                        if(data.activatedUserList == undefined){
+                            layer.msg(data.msg, {icon:1, time: 1000 },function () {
+                                window.location.reload();
+                            });
+                        }else{
+                            // 弹出框框
+                            layer.open({
+                                type: 1,
+                                title: '请确认客户经理',
+                                shadeClose: true,
+                                shade: 0.3,
+                                maxmin: true, //开启最大化最小化按钮
+                                area: ['40%', '60%'],
+                                content: $('#tableDiv'),
+                                btn: ['关闭'],
+                                success: (layero, index) => {
+                                    $("div .tableDivSec").remove();
+
+                                    managerInfo.map(cur => {
+
+                                        let word = '<tr class="tableDivSec">\n' +
+                                            '                <td>\n' +
+                                            '                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableItem">\n' +
+                                            '                        <tr>\n' +
+                                            '                            <td class="trItem managerId" style="display: none">' + cur.userId + '</td>\n' +
+                                            '                            <td class="trItem managerName">'+ cur.userName +'</td>\n' +
+                                            '                            <td class="trItem">'+ cur.orgAbbreviation +'</td>\n' +
+                                            '                            <td class="trItem"> <button class="buttonDetail">确定</button> </td>\n' +
+                                            '                        </tr>\n' +
+                                            '                    </table>\n' +
+                                            '                </td>\n' +
+                                            '            </tr>'
+
+                                        $("#tableDiv").append(word);
+                                    })
+
+                                    $(".tableItem:even").css('background','#f2f2f2');
+
+                                    $(".buttonDetail").each(function () {
+                                        $(this).click(function () {
+                                            let managerId = $(this).parents(".tableItem").find(".managerId").text();
+                                            console.log(1111111111111,managerId)
+                                            let managerName = $(this).parents(".tableItem").find(".managerName").text();
+                                            console.log(2222222222,managerName)
+                                            //新增客户经理配置
+                                            let params = $.extend(orgData,{"managerId":managerId,"managerName":managerName})
+                                            console.log("params---------",params)
+                                            $.ajax({
+                                                type: "post",
+                                                url: `${zlhjConfig.baseUrl}/managerAllot/addManagerConfig`,
+                                                data:JSON.stringify(params),
+                                                dataType: "json",
+                                                contentType :'application/json',
+                                                success:function (data) {
+                                                    console.log(data)
+                                                    if(data.state == "Y"){
+                                                        layer.msg(data.msg, {icon:1, time: 1000 },function () {
+                                                            window.location.reload();
+                                                        });
+                                                    }else{
+                                                        layer.msg(data.msg, {icon:5, time: 2000});
+                                                    }
+
+
+                                                },
+                                                error:function (e) {
+                                                    console.log("error")
+                                                }
+                                            })
+
+                                        })
+                                    })
+
+                                },
+                                end: () => {
+
+                                }
+                            });
+                        }
+
+                    }else{
+                        layer.msg(data.msg, {icon:5, time: 2000});
+                    }
+
+                },
+                error:function (e) {
+                    console.log("error");
+                    layer.msg(data.msg, {
+                        icon:2,
+                        time: 1000, //1s后自动关闭
+                    });
+                }
+            });
+
+            return false;
+
+        });
+
+
+        //取消
+        $("#cancle").click(function () {
+            let index = parent.layer.getFrameIndex(window.name); //得到当前iframe层的索引
+            parent.layer.close(index); //执行关闭当前iframe层
+        })
+
+
+    });
+</script>
+<script>
+
+</script>
+
+</body>
+</html>

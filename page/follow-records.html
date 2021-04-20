@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>跟进记录</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="../css/public.css" media="all">
+</head>
+<style>
+    .layui-layer-setwin{display: none;}
+    .tableItem{
+        border: 1px solid #333333;
+    }
+    .tableItem tr td{
+        border: 1px solid #e6e6e6;
+        color: #666666;
+        height: 28px;
+        line-height: 28px;
+        padding: 5px 15px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    .tableDiv thead{
+        background: #f2f2f2;
+    }
+    .buttonDetail{
+        background: #009688;
+        padding: 4px 10px;
+        color: #ffffff;
+        border-radius: 2px;
+        border: none;
+    }
+    .trItem{
+        width: 17%;
+    }
+    .trTitle{
+        font-weight: bold;
+        width: 17%;
+    }
+
+</style>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+
+        <!--常用两级表头：
+        <table class="layui-table" lay-data="{
+        width:1000,
+        url:'../api/listData.json',
+        method:'post',
+         request: {
+                pageName: 'currentPage' //页码的参数名称，默认：page
+                ,limitName: 'pageSize' //每页数据量的参数名，默认：limit
+            },
+            response: {
+                // statusName: 'state' //规定数据状态的字段名称，默认：code
+                statusCode: true //规定成功的状态码，默认：0
+                // ,dataName: 'userList' //规定数据列表的字段名称，默认：data
+            },
+            parseData: function(res) {
+                //console.log(1111111,res.boList);
+                return {
+                   'code':res.flag,
+                   'msg':res.message,
+                   'data':res.data.traceList
+        };
+        },
+         page: true,
+         limit: 6,
+         limits:[6]
+         }">
+            <thead>
+            <tr>
+                <th lay-data="{field:'boId', width:150}" >跟进Id</th>
+                <th lay-data="{field:'traceSaleOrgName'}" >销售机构</th>
+                <th lay-data="{field:'traceSaleUserName', width:120}" >电销外呼</th>
+                <th lay-data="{field:'traceDate', width:120}">跟进日期</th>
+                <th lay-data="{field:'traceDesc', width:120}">描述</th>
+                <th lay-data="{field:'traceNextDate', width:120}">下次跟进日期</th>
+                <th lay-data="{fixed: 'right', width: 160, align: 'center', toolbar: '#barDemo'}" rowspan="2">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>描述</td>
+                <td lay-data="{field:'traceDesc', width:120}" colspan="3"></td>
+            </tr>
+            </tbody>
+        </table>-->
+
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableDiv">
+            <tr class="tableDivFirst">
+                <td>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableItem first">
+                        <thead>
+                        <tr>
+                            <td class="trTitle"  style="display: none">跟进Id</td>
+                            <td class="trTitle">销售机构</td>
+                            <td class="trTitle">电销外呼</td>
+                            <td class="trTitle">跟进日期</td>
+                            <td class="trTitle">跟进结论</td>
+                            <td class="trTitle">下次跟进日期</td>
+                            <td class="trTitle">操作</td>
+                        </tr>
+                        </thead>
+                    </table>
+                </td>
+            </tr>
+            <!--<tr>-->
+                <!--<td>-->
+                    <!--<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableItem">-->
+                        <!--<tr>-->
+                            <!--<td class="trItem traceIdDiv" style="display: none">BU2020073000000291001</td>-->
+                            <!--<td class="trItem">B级机构</td>-->
+                            <!--<td class="trItem">电销外呼</td>-->
+                            <!--<td class="trItem">2020-07-30</td>-->
+                            <!--<td class="trItem">有意向</td>-->
+                            <!--<td class="trItem">2020-07-31</td>-->
+                            <!--<td class="trItem" rowspan="2">-->
+                                <!--<button class="buttonDetail">下载语音</button>-->
+                            <!--</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td class="trItem">描述</td>-->
+                            <!--<td class="trItem" colspan="4">身向云山那畔行，北风吹断马嘶声</td>-->
+                        <!--</tr>-->
+                    <!--</table>-->
+                <!--</td>-->
+            <!--</tr>-->
+
+
+        </table>
+
+        <!-- 隐藏栏位 -->
+        <input type="hidden" id="traceId" name="traceId"/>
+        <input type="hidden" id="boId" name="boId"/>
+
+        <!--<table class="layui-hide" id="currentTableId" lay-filter="currentTableId"></table>-->
+
+        <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-xs " lay-event="downLoadVoice">下载语音</a>
+        </script>
+        <form class="layui-form" action="" lay-filter="orgInfo" id="nextTraceDate">
+            <!--<div class="layui-form-item">-->
+                <!--<div class="layui-input-block">-->
+                    <!--<button type="button" class="layui-btn" lay-filter="back" id="back">返回</button>-->
+                <!--</div>-->
+            <!--</div>-->
+        </form>
+        <script type="text/html" id="recordVoiceBar">
+            <a class="layui-btn layui-btn-xs " lay-event="recordVoices">录音</a>
+        </script>
+    </div>
+</div>
+<script src="../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+<script src="../js/ajaxhook.min.js?v=1.0.4" charset="utf-8"></script>
+<script src="../js/httpIntercept.js?v=1.0.4" charset="utf-8"></script>
+<script>
+    layui.use(['form', 'table','layer','zlhjConfig'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            layer = layui.layer,
+            zlhjConfig = layui.zlhjConfig,
+            table = layui.table;
+
+        // $(".tableDiv tr:even").css('background','#f2f2f2')
+
+        var boIdVal = $("#boId").val(),
+            traceIdVal = $("#traceId").val();
+
+        //跟进记录列表
+        $.ajax({
+            type:"post",
+            url:`${zlhjConfig.baseUrl}/traceInfo/list`,
+            data: JSON.stringify({boId:boIdVal}),
+            dataType: 'JSON',
+            contentType :'application/json',
+            success: function (res) {
+                let data = res.data.traceList;
+
+                data.map(cur => {
+                    if(cur.traceConclusion === 1){  cur.traceConclusion = "接受进件"}
+                    else if(cur.traceConclusion === 2){ cur.traceConclusion = "拒绝进件"}
+                    else if(cur.traceConclusion === 3){ cur.traceConclusion = "下次跟进"}
+                    else if(cur.traceConclusion === 4){ cur.traceConclusion = "重新分配销售"}
+                    else if(cur.traceConclusion === 5){ cur.traceConclusion = "跟进中"}
+                    else if(cur.traceConclusion === 6){ cur.traceConclusion = "取消"}
+                    else if(cur.traceConclusion === 7){ cur.traceConclusion = "结束"}
+                    else{
+                        cur.traceConclusion = "未知"
+                    }
+
+                    if(cur.traceNextDate === null || cur.traceNextDate === ""){
+                        cur.traceNextDate = "-"
+                    }
+                    if(cur.traceDesc === null || cur.traceDesc === ""){
+                        cur.traceDesc = "-"
+                    }
+
+                    let word = '<tr>\n' +
+                        '                <td>\n' +
+                        '                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableItem">\n' +
+                        '                        <tr>\n' +
+                        '                            <td class="trItem traceIdDiv" style="display: none">' + cur.traceId + '</td>\n' +
+                        '                            <td class="trItem">'+ cur.traceSaleOrgName +'</td>\n' +
+                        '                            <td class="trItem">'+ cur.traceSaleUserName +'</td>\n' +
+                        '                            <td class="trItem">'+ cur.traceDate +'</td>\n' +
+                        '                            <td class="trItem">'+ cur.traceConclusion +'</td>\n' +
+                        '                            <td class="trItem">'+ cur.traceNextDate +'</td>\n' +
+                        '                            <td class="trItem" rowspan="2"> <button class="buttonDetail">下载语音</button> </td>\n' +
+                        '                        </tr>\n' +
+                        '                        <tr>\n' +
+                        '                            <td class="trItem">描述</td>\n' +
+                        '                            <td class="trItem" colspan="4">'+ cur.traceDesc +'</td>\n' +
+                        '                        </tr>\n' +
+                        '                    </table>\n' +
+                        '                </td>\n' +
+                        '            </tr>'
+
+                    $(".tableDiv").append(word);
+                })
+
+                $(".tableItem:even").css('background','#f2f2f2');
+
+                $(".buttonDetail").each(function () {
+                    $(this).click(function () {
+                        let traceId = $(this).parents(".tableItem").find(".traceIdDiv").text();
+                        console.log(traceId)
+                        //弹出框框
+                        layer.open({
+                            type: 1,
+                            title: '语音记录',
+                            shadeClose: true,
+                            shade: 0.3,
+                            maxmin: true, //开启最大化最小化按钮
+                            area: ['50%', '70%'],
+                            content: `<table class="layui-hide" id="recordVoice" lay-filter="recordVoice"></table>`,
+                            //data: {id: `${data.boId}`},
+                            btn: ['关闭'],
+                            success: (layero, index) => {
+                                //成功之后加载列表
+                                table.render({
+                                    elem: '#recordVoice',
+                                    defaultToolbar: ['filter'],
+                                    request: {
+                                        pageName: 'currentPage' //页码的参数名称，默认：page
+                                        ,limitName: 'pageSize' //每页数据量的参数名，默认：limit
+                                    },
+                                    response: {
+                                        // statusName: 'state' //规定数据状态的字段名称，默认：code
+                                        statusCode: true //规定成功的状态码，默认：0
+                                        // ,dataName: 'userList' //规定数据列表的字段名称，默认：data
+                                    },
+                                    method:'post',
+                                    contentType: 'application/json',
+                                    where:{traceId:traceId},
+                                    url: `${zlhjConfig.baseUrl}/traceInfo/getTraceCallList`,
+                                    // where:{boId:boIdVal},
+                                    // url: `${zlhjConfig.baseUrl}/traceInfo/getCallList`,
+                                    //toolbar: '<h5>电话录音记录</h5>',
+                                    parseData: function(res) {
+                                        return {
+                                            "code": res.flag,
+                                            "msg": res.message,
+                                            "data": res.data.callList
+                                        };
+                                    },
+                                    cols: [[
+                                        {field: 'userName', minWidth:100,title: '电销外呼', align: "center"},
+                                        {field: 'path', minWidth:100,title: '录音路径', align: "center",hide:"true"},
+                                        {field: 'callId', minWidth:100,title: '呼叫编号', align: "center"},
+                                        {field: 'platformPath', minWidth:100,title: '录音路径', align: "center",hide:"true",},
+                                        {title: '录音', minWidth: 88,  fixed: "right", align: "center",
+                                            // templet: '#recordVoiceBar',
+                                            templet: (res) => {
+                                                var isFileValid = res.isFileValid;
+                                                if(isFileValid == 1){
+                                                    return "<a class=\"layui-btn layui-btn-xs \" lay-event=\"recordVoices\">录音</a>"
+                                                }else{
+                                                    return "文件失效"
+                                                }
+
+                                            }
+
+                                        }
+                                    ]],
+
+                                });
+
+                            },
+                            end: () => {
+
+                            }
+                        });
+
+                    })
+                })
+
+
+            }
+        });
+
+
+        /**
+         * 原来的layui table*/
+        //跟进记录列表
+        // table.render({
+        //     elem: '#currentTableId',
+        //     method:"post",
+        //     url: `${zlhjConfig.baseUrl}/traceInfo/list`,
+        //     where:{boId:boIdVal},
+        //     contentType: 'application/json',
+        //     toolbar: '<h5>跟进记录列表</h5>',
+        //     defaultToolbar: ['filter'],
+        //     request: {
+        //         pageName: 'currentPage' //页码的参数名称，默认：page
+        //         ,limitName: 'pageSize' //每页数据量的参数名，默认：limit
+        //     },
+        //     response: {
+        //         // statusName: 'state' //规定数据状态的字段名称，默认：code
+        //         statusCode: true //规定成功的状态码，默认：0
+        //         // ,dataName: 'userList' //规定数据列表的字段名称，默认：data
+        //     },
+        //     parseData: function(res) {
+        //         return {
+        //             "code": res.flag,
+        //             "msg": res.message,
+        //             "data": res.data.traceList
+        //         };
+        //     },
+        //     cols: [[
+        //         {field: 'boId', minWidth: 80, title: '跟进Id', align: "center",hide:"true"},
+        //         {field: 'traceSaleOrgName', minWidth: 100, title: '销售机构', align: "center"},
+        //         {field: 'traceSaleUserName', minWidth: 100, title: '电销外呼', align: "center"},
+        //         {field: 'traceDate', minWidth: 80, title: '跟进日期', align: "center"},
+        //         {field: 'traceConclusion', minWidth: 80, title: '跟进结论', align: "center",templet:(res) => {
+        //                 if(res.traceConclusion === 1){ return "有意向"}
+        //                 else if(res.traceConclusion === 2){ return "结束"}
+        //                 else if(res.traceConclusion === 3){ return "下次跟进"}
+        //                 else if(res.traceConclusion === 4){ return "重新分配销售"}
+        //                 else if(res.traceConclusion === 5){ return "跟进中"}
+        //                 else if(res.traceConclusion === 6){ return "取消"}
+        //                 else{
+        //                     return "未知"
+        //                 }
+        //             }},
+        //         {field: 'traceDesc', minWidth: 300, title: '描述', align: "center"},
+        //         {field: 'traceNextDate', minWidth: 80, title: '下次跟进日期', align: "center"},
+        //         {title: '操作', minWidth: 60, templet: '#currentTableBar', fixed: "right", align: "center"}
+        //     ]],
+        //     // limits: [10, 15, 20, 25, 50, 100],
+        //     // limit: 20,
+        //     // page: true
+        // });
+
+        // 下载语音
+        // table.on('tool(currentTableId)', (obj) => {
+        //     let data = obj.data; //获得当前行数据
+        //     console.log(`data:${JSON.stringify(data)}`);
+        //     let layEvent = obj.event;
+        //     console.log(`data:${layEvent}`);
+        //     let tr = obj.tr;
+        //     console.log(`data:${JSON.stringify(tr)}`);
+        //     console.log('跟进Id',data.traceId)
+        //     //弹出框框
+        //     layer.open({
+        //         type: 1,
+        //         title: '语音记录',
+        //         shadeClose: true,
+        //         shade: false,
+        //         maxmin: true, //开启最大化最小化按钮
+        //         area: ['50%', '70%'],
+        //         content: `<table class="layui-hide" id="recordVoice" lay-filter="recordVoice"></table>`,
+        //         //data: {id: `${data.boId}`},
+        //         btn: ['关闭'],
+        //         success: (layero, index) => {
+        //             //成功之后加载列表
+        //             table.render({
+        //                 elem: '#recordVoice',
+        //                 defaultToolbar: ['filter'],
+        //                 request: {
+        //                     pageName: 'currentPage' //页码的参数名称，默认：page
+        //                     ,limitName: 'pageSize' //每页数据量的参数名，默认：limit
+        //                 },
+        //                 response: {
+        //                     // statusName: 'state' //规定数据状态的字段名称，默认：code
+        //                     statusCode: true //规定成功的状态码，默认：0
+        //                     // ,dataName: 'userList' //规定数据列表的字段名称，默认：data
+        //                 },
+        //                 method:'post',
+        //                 contentType: 'application/json',
+        //                 where:{traceId:data.traceId},
+        //                 url: `${zlhjConfig.baseUrl}/traceInfo/getTraceCallList`,
+        //                 // where:{boId:boIdVal},
+        //                 // url: `${zlhjConfig.baseUrl}/traceInfo/getCallList`,
+        //                 //toolbar: '<h5>电话录音记录</h5>',
+        //                 parseData: function(res) {
+        //                     return {
+        //                         "code": res.flag,
+        //                         "msg": res.message,
+        //                         "data": res.data.callList
+        //                     };
+        //                 },
+        //                 cols: [[
+        //                     {field: 'traceId', minWidth:100,title: '跟进Id', align: "center"},
+        //                     {field: 'path', minWidth:100,title: '录音路径', align: "center",hide:"true"},
+        //                     {field: 'callId', minWidth:100,title: '呼叫编号', align: "center"},
+        //                     {title: '录音', minWidth: 100, templet: '#recordVoiceBar', fixed: "right", align: "center"}
+        //                 ]],
+        //
+        //             });
+        //
+        //         },
+        //         end: () => {
+        //
+        //         }
+        //     });
+        //
+        // });
+        /**
+         * 原来的layui table end*/
+
+
+        // 监听录音表格
+        table.on('tool(recordVoice)',(obj) => {
+            let data = obj.data;//获得当前行数据
+            let layEvent = obj.event;
+            let downloadPath
+            if(obj.event = 'recordVoices'){
+                if(data.platformPath ==='' || data.platformPath === null ){
+                    downloadPath = data.path
+                }else {
+                    downloadPath = data.platformPath
+                }
+                window.location.href = downloadPath;
+                console.log(data)
+                console.log('下载成功！')
+            }
+        })
+
+
+        //返回
+        $("#back").on("click", () => {
+            let index = parent.layer.getFrameIndex(window.name); //得到当前iframe层的索引
+            parent.layer.close(index); //执行关闭当前iframe层
+        })
+
+
+    });
+
+</script>
+<script>
+
+</script>
+
+</body>
+</html>

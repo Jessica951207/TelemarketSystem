@@ -1,0 +1,80 @@
+{
+  "flag": true,
+  "message": "查询用户跟进历史成功！",
+  "data": {
+    "traceList": [
+      {
+        "boId": "BU2020073000000291001",
+        "traceSaleOrgId": 12,
+        "traceSaleOrgName": "B级机构",
+        "traceSaleUserId": 7,
+        "traceSaleUserName": "电销外呼普",
+        "traceDate": "2020-07-30",
+        "traceConclusion": 5,
+        "traceDesc": "身向云山那畔行，北风吹断马嘶声，深秋远塞若为情一抹晚烟荒戍垒半竿斜日旧关城，古今幽恨几时平",
+        "traceNextDate": "2020-07-30",
+        "traceId": 406
+      },
+      {
+        "boId": "BU2020073000000291001",
+        "traceSaleOrgId": 12,
+        "traceSaleOrgName": "B级机构",
+        "traceSaleUserId": 7,
+        "traceSaleUserName": "电销外呼普",
+        "traceDate": "2020-07-30",
+        "traceConclusion": 5,
+        "traceDesc": "身向云山那畔行，北风吹断马嘶声，深秋远塞若为情一抹晚烟荒戍垒半竿斜日旧关城，古今幽恨几时平",
+        "traceNextDate": "2020-07-30",
+        "traceId": 406
+      },
+      {
+        "boId": "BU2020073000000291001",
+        "traceSaleOrgId": 12,
+        "traceSaleOrgName": "B级机构",
+        "traceSaleUserId": 7,
+        "traceSaleUserName": "电销外呼普",
+        "traceDate": "2020-07-30",
+        "traceConclusion": 5,
+        "traceDesc": "身向云山那畔行，北风吹断马嘶声，深秋远塞若为情一抹晚烟荒戍垒半竿斜日旧关城，古今幽恨几时平",
+        "traceNextDate": "2020-07-30",
+        "traceId": 406
+      },
+      {
+        "boId": "BU2020073000000291001",
+        "traceSaleOrgId": 12,
+        "traceSaleOrgName": "B级机构",
+        "traceSaleUserId": 7,
+        "traceSaleUserName": "电销外呼普",
+        "traceDate": "2020-07-30",
+        "traceConclusion": 5,
+        "traceDesc": "身向云山那畔行，北风吹断马嘶声，深秋远塞若为情一抹晚烟荒戍垒半竿斜日旧关城，古今幽恨几时平",
+        "traceNextDate": "2020-07-30",
+        "traceId": 406
+      },
+      {
+        "boId": "BU2020073000000291001",
+        "traceSaleOrgId": 12,
+        "traceSaleOrgName": "B级机构",
+        "traceSaleUserId": 7,
+        "traceSaleUserName": "电销外呼普",
+        "traceDate": "2020-07-30",
+        "traceConclusion": 5,
+        "traceDesc": "身向云山那畔行，北风吹断马嘶声，深秋远塞若为情一抹晚烟荒戍垒半竿斜日旧关城，古今幽恨几时平",
+        "traceNextDate": "2020-07-30",
+        "traceId": 406
+      },
+      {
+        "boId": "BU2020073000000291001",
+        "traceSaleOrgId": 12,
+        "traceSaleOrgName": "B级机构",
+        "traceSaleUserId": 7,
+        "traceSaleUserName": "电销外呼普",
+        "traceDate": "2020-07-30",
+        "traceConclusion": 5,
+        "traceDesc": "身向云山那畔行，北风吹断马嘶声，深秋远塞若为情一抹晚烟荒戍垒半竿斜日旧关城，古今幽恨几时平",
+        "traceNextDate": "2020-07-30",
+        "traceId": 406
+      }
+    ]
+  }
+}

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>首页</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
+    <link rel="stylesheet" href="../css/public.css" media="all">
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<style>
+    .layui-col-md2{
+        padding: 10px;
+        line-height: 50px;
+        text-align: center;
+        border-right: 1px dotted #E0E0E3 ;
+        cursor: pointer;
+        width: 20%;
+    }
+    .layui-col-md2:last-child{border-right: none;}
+    .layui-card-header{font-weight: bold}
+    .layui-col-md2 p{color: #9a9696}
+    .layui-col-md2 span{color: #1aa094;font-size: 20px;margin-right: 4px;}
+    .hide{display: none}
+    .monthCard{width: 50%;}
+    .layui-icon-loading:before{
+        display: block;
+        font-size: 50px;
+        /*color: #1aa094;*/
+    }
+</style>
+<body>
+<div class="layuimini-container">
+    <div class="layui-card" id="todayDiv" style="display: none;">
+        <div class="layui-card-header">今日头条</div>
+        <div class="layui-card-body">
+            <div class="layui-row todayCount">
+                <div class="layui-col-md2">
+                    <a href="javascript:;" data-title="">
+                        <div class="grid-demo grid-demo-bg1">
+                            <span class="needFollowCount">0</span>条
+                            <p>待跟进线索数量</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="layui-col-md2">
+                    <a href="javascript:;" data-title="">
+                        <div class="grid-demo">
+                            <span class="completedClue">0</span>条
+                            <p>已完成线索</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="layui-col-md2">
+                    <a href="javascript:;"  data-title="">
+                        <div class="grid-demo">
+                            <span class="refuseClue">0</span>条
+                            <p>已拒绝线索</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="layui-col-md2">
+                    <a href="javascript:;" data-title="">
+                        <div class="grid-demo grid-demo-bg1">
+                            <span class="deleteRepeatCallCount">0</span>条
+                            <p>去重外呼数</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="layui-col-md2">
+                    <a href="javascript:;" data-title="">
+                        <div class="grid-demo grid-demo-bg1">
+                            <span class="callSuccessCount">0</span>条
+                            <p>接通数</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="layui-col-md2">
+                    <a href="javascript:;" data-title="">
+                        <div class="grid-demo grid-demo-bg1">
+                            <span class="needReturnClues">0</span>条
+                            <p>待回访线索</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="layui-col-md2">
+                    <a href="javascript:;" data-title="">
+                        <div class="grid-demo">
+                            <span class="pushSuccessCount">0</span>条
+                            <p>进件笔数</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="layui-col-md2">
+                    <a href="javascript:;"  data-title="">
+                        <div class="grid-demo">
+                            <span class="pushSuccessAmount">0</span>元
+                            <p>进件金额</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="layui-col-md2">
+                    <a href="javascript:;" data-title="">
+                        <div class="grid-demo grid-demo-bg1">
+                            <span class="releaseLoanCount">0</span>条
+                            <p>放款笔数</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="layui-col-md2">
+                    <a href="javascript:;" data-title="">
+                        <div class="grid-demo grid-demo-bg1">
+                            <span class="releaseLoanAmount">0</span>元
+                            <p>放款金额</p>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-card" id="todayTeamDiv" style="display: none;">
+        <div class="layui-card-header">
+            今日头条（团队）
+            <button type="button" class="layui-btn" lay-filter="checkTeam" id="checkTeam">查看团队</button>
+        </div>
+        <div class="layui-card-body">
+            <div class="layui-row todayCount">
+                <div class="layui-col-md2">
+                    <a href="javascript:;" data-title="">
+                        <div class="grid-demo grid-demo-bg1">
+                            <span class="needFollowCountTeam">0</span>条
+                            <p>待跟进线索数量</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="layui-col-md2">
+                    <a href="javascript:;" data-title="">
+                        <div class="grid-demo">
+                            <span class="completedClueTeam">0</span>条
+                            <p>已完成线索</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="layui-col-md2">
+                    <a href="javascript:;"  data-title="">
+                        <div class="grid-demo">
+                            <span class="refuseClueTeam">0</span>条
+                            <p>已拒绝线索</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="layui-col-md2">
+                    <a href="javascript:;" data-title="">
+                        <div class="grid-demo grid-demo-bg1">
+                            <span class="deleteRepeatCallCountTeam">0</span>条
+                            <p>去重外呼数</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="layui-col-md2">
+                    <a href="javascript:;" data-title="">
+                        <div class="grid-demo grid-demo-bg1">
+                            <span class="callSuccessCountTeam">0</span>条
+                            <p>接通数</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="layui-col-md2">
+                    <a href="javascript:;" data-title="">
+                        <div class="grid-demo grid-demo-bg1">
+                            <span class="needReturnCluesTeam">0</span>条
+                            <p>待回访线索</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="layui-col-md2">
+                    <a href="javascript:;" data-title="">
+                        <div class="grid-demo">
+                            <span class="pushSuccessCountTeam">0</span>条
+                            <p>进件笔数</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="layui-col-md2">
+                    <a href="javascript:;"  data-title="">
+                        <div class="grid-demo">
+                            <span class="pushSuccessAmountTeam">0</span>元
+                            <p>进件金额</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="layui-col-md2">
+                    <a href="javascript:;" data-title="">
+                        <div class="grid-demo grid-demo-bg1">
+                            <span class="releaseLoanCountTeam">0</span>条
+                            <p>放款笔数</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="layui-col-md2">
+                    <a href="javascript:;" data-title="">
+                        <div class="grid-demo grid-demo-bg1">
+                            <span class="releaseLoanAmountTeam">0</span>元
+                            <p>放款金额</p>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-card" id="monthDiv" style="display: none;">
+        <div class="layui-card-header">本月完成</div>
+        <div class="layui-card-body">
+            <div class="layui-row monthCount">
+                <div class="layui-col-md2 monthCard monthFollowCount">
+                    <a href="javascript:;" data-title="跟进数量">
+                        <div class="grid-demo">
+                            <span class="month_follow_count">0</span>条
+                            <p>跟进数量</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="layui-col-md2 monthCard monthSuccessCount">
+                    <a href="javascript:;" data-title="成功数量">
+                        <div class="grid-demo grid-demo-bg1">
+                            <span class="month_success_count">0</span>条
+                            <p>成功数量</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="layui-form-item checkTeamDiv" style="display: none">-->
+        <!--<div class="layui-input-block">-->
+            <!--<button type="button" class="layui-btn" lay-filter="checkTeam" id="checkTeam">查看团队</button>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <div id="sysUserDiv" style="width: 100%;height: 100%;display: none;text-align:center;padding-top: 20%;background-color: #f2f2f2;">
+        <em style="font-size: 45px;">电销外呼系统欢迎您！</em>
+    </div>
+    <!--<div class="layuimini-main">-->
+        <!--<div class="layui-row layui-col-space15">-->
+                <!--<div class="layui-card">-->
+                    <!--<div class="layui-card-header"><i class="fa fa-line-chart icon"></i>报表统计</div>-->
+                    <!--<div class="layui-card-body">-->
+                        <!--<div id="echarts-records" style="width: 100%;min-height:500px"></div>-->
+                    <!--</div>-->
+                <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+</div>
+<script src="../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+<script src="../js/ajaxhook.min.js?v=1.0.4" charset="utf-8"></script>
+<script src="../js/httpIntercept.js?v=1.0.4" charset="utf-8"></script>
+<script>
+    layui.use(['layer', 'layuimini', 'echarts', 'zlhjConfig', 'form', 'layedit', 'laydate', 'table', 'layarea', 'inputTags', 'enhanceForm','laydate','zlhjConfig'], function () {
+        var form = layui.form
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , laydate = layui.laydate
+            , table = layui.table
+            , layuimini = layui.layuimini
+            , layarea = layui.layarea
+            , inputTags = layui.inputTags
+            , enhanceForm = layui.enhanceForm
+            , zlhjConfig = layui.zlhjConfig
+            , echarts = layui.echarts
+            , $ = layui.jquery;
+
+        let user = layui.sessionData('sessionData').userSession;
+        console.log(user);
+        // user.userRole:用户角色(1:名单导入,2:电销外呼,3:管理人员,4:系统管理员)
+        // user.userType:用户类型(1:普通员工,2:主管)
+        if(user.userRole === 1){//名单导入
+            $('#sysUserDiv').show();
+
+        }else if(user.userRole === 2){//电销外呼
+            $('#todayDiv').show();
+            $('#monthDiv').show();
+            if(user.userType == 2){
+                $("#todayTeamDiv").show()
+            }
+
+        }else if(user.userRole === 3){//管理人员
+            $('#sysUserDiv').show();
+
+        }else{//系统管理员
+            $('#sysUserDiv').show();
+        }
+        //给span赋值
+        window.init = () => {
+            $.ajax({
+                type: "get",
+                url: `${zlhjConfig.baseUrl}/businessOpportunity/getHomePage`,
+                dataType: "json",
+                contentType :'application/json',
+                success:function (res) {
+                    console.log(`首页数据-->${JSON.stringify(res)}`);
+                    let data = res.statisticMap;
+                    //赋值今日头条
+                    $('.needFollowCount').text(data.needFollowCount);
+                    $('.completedClue').text(data.completedClue);
+                    $('.refuseClue').text(data.refuseClue);
+                    $('.deleteRepeatCallCount').text(data.deleteRepeatCallCount);
+                    $('.callSuccessCount').text(data.callSuccessCount);
+                    $('.needReturnClues').text(data.needReturnClues);
+                    $('.pushSuccessCount').text(data.pushSuccessCount);
+                    $('.pushSuccessAmount').text(data.pushSuccessAmount);
+                    $('.releaseLoanCount').text(data.releaseLoanCount);
+                    $('.releaseLoanAmount').text(data.releaseLoanAmount);
+                    //赋值今日头条
+                    $('.needFollowCountTeam').text(data.needFollowCountTeam);
+                    $('.completedClueTeam').text(data.completedClueTeam);
+                    $('.refuseClueTeam').text(data.refuseClueTeam);
+                    $('.deleteRepeatCallCountTeam').text(data.deleteRepeatCallCountTeam);
+                    $('.callSuccessCountTeam').text(data.callSuccessCountTeam);
+                    $('.needReturnCluesTeam').text(data.needReturnCluesTeam);
+                    $('.pushSuccessCountTeam').text(data.pushSuccessCountTeam);
+                    $('.pushSuccessAmountTeam').text(data.pushSuccessAmountTeam);
+                    $('.releaseLoanCountTeam').text(data.releaseLoanCountTeam);
+                    $('.releaseLoanAmountTeam').text(data.releaseLoanAmountTeam);
+                    //赋值本月完成
+                    $('.month_follow_count').text(data.curMonthGj);
+                    $('.month_success_count').text(data.curMonthSuccess);
+
+                },
+                error:function () {
+                    console.log("error");
+                }
+            });
+        };
+        init();
+        // 定时器
+        setInterval("init()",30000);
+
+        //更新登录状态
+        window.initLog = () => {
+            $.ajax({
+                type: "get",
+                url: `${zlhjConfig.baseUrl}/user/updateLoginState`,
+                dataType: "json",
+                contentType: 'application/json',
+                success: function (res) {
+                    if(res.flag === true){
+                        console.log("update Login State success!")
+                    }
+
+                },
+                error:function (res) {
+
+                }
+            })
+        }
+        initLog();
+        setInterval("initLog()",20000)
+
+
+        //查看团队
+        $("#checkTeam").click(function () {
+            layer.open({
+                type: 0,
+                title: '团队信息',
+                // shadeClose: true,
+                shade: 0.3,
+                maxmin: true, //开启最大化最小化按钮
+                area: ['80%', '80%'],
+                content: `<table class="layui-hide" id="teamAllData" lay-filter="teamAllData"></table>`,
+                //data: {id: `${data.boId}`},
+                btn: ['关闭'],
+                success: (layero, index) => {
+                    //成功之后加载列表
+                    table.render({
+                        elem: '#teamAllData',
+                        defaultToolbar: ['filter'],
+                        request: {
+                            pageName: 'currentPage' //页码的参数名称，默认：page
+                            ,limitName: 'pageSize' //每页数据量的参数名，默认：limit
+                        },
+                        response: {
+                            // statusName: 'state', //规定数据状态的字段名称，默认：code
+                            statusCode: "Y" //规定成功的状态码，默认：0
+                            // ,dataName: 'userList' //规定数据列表的字段名称，默认：data
+                        },
+                        method:'post',
+                        contentType: 'application/json',
+                        // where:{boId:"BU2020082700206262001"},
+                        url: `${zlhjConfig.baseUrl}/businessOpportunity/getTeamBoStatistic`,
+                        parseData: function(res) {
+                            return {
+                                code: res.state, //解析接口状态
+                                msg: res.msg, //解析提示文本
+                                count: res.total, //解析数据长度
+                                data: res.statisticList //解析数据列表
+                            };
+                        },
+                        cols:  [[ //标题栏
+                            {field: 'userName', title: '姓名', width: 140, rowspan: 2,fixed:'left'} //rowspan即纵向跨越的单元格数
+                            ,{align: 'center', title: '当日', colspan: 10} //colspan即横跨的单元格数，这种情况下不用设置field和width
+                            ,{align: 'center', title: '本月', colspan: 2}
+                        ], [
+                            {field: 'needFollowCount', title: '待跟进线索数量', width: 100}
+                            ,{field: 'completedClue', title: '已完成线索', width: 100}
+                            ,{field: 'refuseClue', title: '已拒绝线索', width: 100}
+                            ,{field: 'deleteRepeatCallCount', title: '去重外呼数', width: 100}
+                            ,{field: 'callSuccessCount', title: '接通数', width: 100}
+                            ,{field: 'needReturnClues', title: '待回访线索', width: 100}
+                            ,{field: 'pushSuccessCount', title: '进件笔数', width: 100}
+                            ,{field: 'pushSuccessAmount', title: '进件金额', width: 120}
+                            ,{field: 'releaseLoanCount', title: '放款笔数', width: 100}
+                            ,{field: 'releaseLoanAmount', title: '放款金额', width: 120}
+                            ,{field: 'curMonthGj', title: '跟进数量', width: 100}
+                            ,{field: 'curMonthSuccess', title: '成功数量', width: 100}
+                        ]],
+                        limits: [10, 20, 50, 100],
+                        limit: 10,
+                        page: true,
+                        height: 450
+
+                    });
+
+                },
+                end: () => {
+
+                }
+            });
+        })
+
+
+
+
+
+
+
+
+        /**
+         * 报表功能
+         */
+        // var echartsRecords = echarts.init(document.getElementById('echarts-records'), 'walden');
+        // var optionRecords = {
+        //     tooltip: {
+        //         trigger: 'axis'
+        //     },
+        //     legend: {
+        //         data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+        //     },
+        //     grid: {
+        //         left: '3%',
+        //         right: '4%',
+        //         bottom: '3%',
+        //         containLabel: true
+        //     },
+        //     toolbox: {
+        //         feature: {
+        //             saveAsImage: {}
+        //         }
+        //     },
+        //     xAxis: {
+        //         type: 'category',
+        //         boundaryGap: false,
+        //         data: ['周一','周二','周三','周四','周五','周六','周日']
+        //     },
+        //     yAxis: {
+        //         type: 'value'
+        //     },
+        //     series: [
+        //         {
+        //             name:'邮件营销',
+        //             type:'line',
+        //             data:[120, 132, 101, 134, 90, 230, 210]
+        //         },
+        //         {
+        //             name:'联盟广告',
+        //             type:'line',
+        //             data:[220, 182, 191, 234, 290, 330, 310]
+        //         },
+        //         {
+        //             name:'视频广告',
+        //             type:'line',
+        //             data:[150, 232, 201, 154, 190, 330, 410]
+        //         },
+        //         {
+        //             name:'直接访问',
+        //             type:'line',
+        //             data:[320, 332, 301, 334, 390, 330, 320]
+        //         },
+        //         {
+        //             name:'搜索引擎',
+        //             type:'line',
+        //             data:[820, 932, 901, 934, 1290, 1330, 1320]
+        //         }
+        //     ]
+        // };
+        // echartsRecords.setOption(optionRecords);
+        //
+        // // echarts 窗口缩放自适应
+        // window.onresize = function(){
+        //     echartsRecords.resize();
+        // }
+
+    });
+</script>
+</body>
+</html>

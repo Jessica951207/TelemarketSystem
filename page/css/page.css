@@ -1,0 +1,72 @@
+.layui-inline #tags{
+    width:390px;
+    border:1px solid #e6e6e6;
+}
+#inputTags{
+    background-color: #fff;
+}
+.layui-form-item .layui-input-inline{
+    width: 200px;
+}
+
+.layuimini-container{
+    position: relative;
+}
+.callTel{
+    position: fixed;
+    z-index: 19891031;
+    top: 50px;
+    right: 17px;
+}
+.callTel .layui-btn{
+    display: block;
+    margin:0;
+    margin-bottom: 10px;
+    width: 100px;
+}
+.layui-form-item{
+    margin-bottom: 0;
+}
+#deleteBorder .layui-input{
+    color: #000000!important;
+}
+#deleteBorder textarea{
+    resize: none
+}
+.grey{
+    color: #757575;
+}
+
+
+.tableItem{
+    border: 1px solid #333333;
+}
+.tableItem tr td{
+    border: 1px solid #e6e6e6;
+    color: #666666;
+    height: 28px;
+    line-height: 28px;
+    padding: 5px 15px;
+    box-sizing: border-box;
+    text-align: center;
+}
+.tableDiv thead{
+    background: #f2f2f2;
+}
+.buttonDetail{
+    width: 80px;
+    margin:0 auto;
+    background: #009688;
+    padding: 4px 10px;
+    color: #ffffff;
+    border-radius: 2px;
+    border: none;
+}
+.trItem{
+    width: 17%;
+}
+.trTitle{
+    font-weight: bold;
+    width: 17%;
+}
+

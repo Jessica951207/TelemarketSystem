@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>回访历史</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="../css/public.css" media="all">
+</head>
+<style>
+    .layui-layer-setwin{display: none;}
+    .tableItem{
+        border: 1px solid #333333;
+    }
+    .tableItem tr td{
+        border: 1px solid #e6e6e6;
+        color: #666666;
+        height: 28px;
+        line-height: 28px;
+        padding: 5px 15px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    .tableDiv thead{
+        background: #f2f2f2;
+    }
+    .buttonDetail{
+        background: #009688;
+        padding: 4px 10px;
+        color: #ffffff;
+        border-radius: 2px;
+        border: none;
+    }
+    .trItem{
+        width: 17%;
+    }
+    .trTitle{
+        font-weight: bold;
+        width: 17%;
+    }
+
+</style>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableDiv">
+            <tr class="tableDivFirst">
+                <td>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableItem first">
+                        <thead>
+                        <tr>
+                            <td class="trTitle"  style="display: none">跟进Id</td>
+                            <td class="trTitle">销售机构</td>
+                            <td class="trTitle">电销外呼</td>
+                            <td class="trTitle">回访日期</td>
+                            <td class="trTitle">语音</td>
+                        </tr>
+                        </thead>
+                    </table>
+                </td>
+            </tr>
+            <!--<tr>-->
+                <!--<td>-->
+                    <!--<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableItem">-->
+                        <!--<tr>-->
+                            <!--<td class="trItem traceIdDiv" style="display: none">BU2020073000000291001</td>-->
+                            <!--<td class="trItem">B级机构</td>-->
+                            <!--<td class="trItem">电销外呼</td>-->
+                            <!--<td class="trItem">2020-07-30</td>-->
+                            <!--<td class="trItem">-->
+                                <!--<button class="buttonDetail">下载语音</button>-->
+                            <!--</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td class="trItem">回访目的</td>-->
+                            <!--<td class="trItem" colspan="3">身向云山那畔行，北风吹断马嘶声</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td class="trItem">回访描述</td>-->
+                            <!--<td class="trItem" colspan="3">身向云山那畔行，北风吹断马嘶声</td>-->
+                        <!--</tr>-->
+                    <!--</table>-->
+                <!--</td>-->
+            <!--</tr>-->
+
+
+        </table>
+
+        <!-- 隐藏栏位 -->
+        <input type="hidden" id="boId" name="boId"/>
+
+        <!--<table class="layui-hide" id="currentTableId" lay-filter="currentTableId"></table>-->
+
+        <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-xs " lay-event="downLoadVoice">下载语音</a>
+        </script>
+        <form class="layui-form" action="" lay-filter="orgInfo" id="nextTraceDate">
+            <!--<div class="layui-form-item">-->
+                <!--<div class="layui-input-block">-->
+                    <!--<button type="button" class="layui-btn" lay-filter="back" id="back">返回</button>-->
+                <!--</div>-->
+            <!--</div>-->
+        </form>
+        <script type="text/html" id="recordVoiceBar">
+            <a class="layui-btn layui-btn-xs " lay-event="recordVoices">录音</a>
+        </script>
+    </div>
+</div>
+<script src="../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+<script src="../js/ajaxhook.min.js?v=1.0.4" charset="utf-8"></script>
+<script src="../js/httpIntercept.js?v=1.0.4" charset="utf-8"></script>
+<script>
+    layui.use(['form', 'table','layer','zlhjConfig'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            layer = layui.layer,
+            zlhjConfig = layui.zlhjConfig,
+            table = layui.table;
+
+        // $(".tableDiv tr:even").css('background','#f2f2f2')
+
+        var boIdVal = $("#boId").val();
+
+        //跟进记录列表
+        $.ajax({
+            type:"get",
+            url:`${zlhjConfig.baseUrl}/callbackRecord/getCallbackRecord`,
+            data: {boId:boIdVal},
+            dataType: 'JSON',
+            contentType :'application/json',
+            success: function (res) {
+                let data = res.boList;
+
+                data.map(cur => {
+                    let time = cur.createTime == null ? "" : layui.util.toDateString(cur.createTime, 'yyyy-MM-dd')
+                    let word = '<tr>\n' +
+                        '                <td>\n' +
+                        '                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableItem">\n' +
+                        '                        <tr>\n' +
+                        '                            <td class="trItem traceIdDiv" style="display: none">' + cur.id + '</td>\n' +
+                        '                            <td class="trItem">'+ cur.saleOrgName +'</td>\n' +
+                        '                            <td class="trItem">'+ cur.saleUserName +'</td>\n' +
+                        '                            <td class="trItem">'+ time +'</td>\n' +
+                        '                            <td class="trItem"> <button class="buttonDetail">下载语音</button> </td>\n' +
+                        '                        </tr>\n' +
+                        '                        <tr>\n' +
+                        '                            <td class="trItem">回访目的</td>\n' +
+                        '                            <td class="trItem" colspan="3">'+ cur.purpose +'</td>\n' +
+                        '                        </tr>\n' +
+                        '                        <tr>\n' +
+                        '                            <td class="trItem">回访描述</td>\n' +
+                        '                            <td class="trItem" colspan="3">'+ cur.describe +'</td>\n' +
+                        '                        </tr>\n' +
+                        '                    </table>\n' +
+                        '                </td>\n' +
+                        '            </tr>'
+
+                    $(".tableDiv").append(word);
+                })
+
+                $(".tableItem:even").css('background','#f2f2f2');
+
+                $(".buttonDetail").each(function () {
+                    $(this).click(function () {
+                        let callRecordId = $(this).parents(".tableItem").find(".traceIdDiv").text();
+                        console.log(callRecordId)
+                        //弹出框框
+                        layer.open({
+                            type: 1,
+                            title: '语音记录',
+                            shadeClose: true,
+                            shade: 0.3,
+                            maxmin: true, //开启最大化最小化按钮
+                            area: ['50%', '70%'],
+                            content: `<table class="layui-hide" id="recordVoice" lay-filter="recordVoice"></table>`,
+                            //data: {id: `${data.boId}`},
+                            btn: ['关闭'],
+                            success: (layero, index) => {
+                                //成功之后加载列表
+                                table.render({
+                                    elem: '#recordVoice',
+                                    defaultToolbar: ['filter'],
+                                    request: {
+                                        pageName: 'currentPage' //页码的参数名称，默认：page
+                                        ,limitName: 'pageSize' //每页数据量的参数名，默认：limit
+                                    },
+                                    response: {
+                                        // statusName: 'state' //规定数据状态的字段名称，默认：code
+                                        statusCode: true //规定成功的状态码，默认：0
+                                        // ,dataName: 'userList' //规定数据列表的字段名称，默认：data
+                                    },
+                                    method:'post',
+                                    contentType: 'application/json',
+                                    where:{callRecordId:callRecordId},
+                                    url: `${zlhjConfig.baseUrl}/callbackRecord/getCallBackRecordList`,
+                                    // where:{boId:boIdVal},
+                                    // url: `${zlhjConfig.baseUrl}/traceInfo/getCallList`,
+                                    //toolbar: '<h5>电话录音记录</h5>',
+                                    parseData: function(res) {
+                                        return {
+                                            "code": res.flag,
+                                            "msg": res.message,
+                                            "data": res.data.callBackCallList
+                                        };
+                                    },
+                                    cols: [[
+                                        {field: 'userName', minWidth:100,title: '电销外呼', align: "center"},
+                                        {field: 'path', minWidth:100,title: '录音路径', align: "center",hide:"true"},
+                                        {field: 'callId', minWidth:100,title: '呼叫编号', align: "center"},
+                                        {field: 'platformPath', minWidth:100,title: '录音路径', align: "center",hide:"true",},
+                                        {title: '录音', minWidth: 88,  fixed: "right", align: "center",
+                                            // templet: '#recordVoiceBar',
+                                            templet: (res) => {
+                                                var isFileValid = res.isFileValid;
+                                                if(isFileValid == 1){
+                                                    return "<a class=\"layui-btn layui-btn-xs \" lay-event=\"recordVoices\">录音</a>"
+                                                }else{
+                                                    return "文件失效"
+                                                }
+
+                                            }
+
+                                        }
+                                    ]],
+
+                                });
+
+                            },
+                            end: () => {
+
+                            }
+                        });
+
+                    })
+                })
+
+
+            }
+        });
+
+        // 监听录音表格
+        table.on('tool(recordVoice)',(obj) => {
+            let data = obj.data;//获得当前行数据
+            let layEvent = obj.event;
+            let downloadPath
+            if(obj.event = 'recordVoices'){
+                if(data.platformPath ==='' || data.platformPath === null ){
+                    downloadPath = data.path
+                }else {
+                    downloadPath = data.platformPath
+                }
+                window.location.href = downloadPath;
+                console.log(data)
+                console.log('下载成功！')
+            }
+        })
+
+
+        //返回
+        $("#back").on("click", () => {
+            let index = parent.layer.getFrameIndex(window.name); //得到当前iframe层的索引
+            parent.layer.close(index); //执行关闭当前iframe层
+        })
+
+
+    });
+
+</script>
+<script>
+
+</script>
+
+</body>
+</html>
